@@ -65,7 +65,7 @@
   </header>
 
   <main>
-   <!-- Sección que contiene un div que muestra una advertencia al usuario al intentar eliminar una cuenta.
+    <!-- Sección que contiene un div que muestra una advertencia al usuario al intentar eliminar una cuenta.
     CSS: position: absolute  opacity: 0
     se activa cuando el usuario pulsa el botón 'Eliminar cuenta' en el menú desplegable que se muestra al hacer clic en el botón de usuario. -->
     <section id="eliminar_usuario">
@@ -98,40 +98,71 @@
     <header id="header_main">
       <!-- Ahorrado/Gastado -->
       <div class="header_div">
-        <h3 class="header_h3">Ahorrado/Gastado</h3>
-        <h2 id= "texto_Ahorrado/Gastado" class="header_h2"><span style="color: rgb(42, 104, 51);">2554</span><span style="color: rgb(0, 0, 0);">  /  </span><span style="color: red;">20145 €</span> </h2>
+        <p class="header_p3">Ahorrado/Gastado</p>
+        <p id="texto_Ahorrado/Gastado" class="header_p2"><span style="color: rgb(42, 104, 51);">2554</span><span
+            style="color: rgb(0, 0, 0);"> / </span><span style="color: red;">20145 €</span> </p>
       </div>
       <!-- Gastado devito -->
       <div class="header_div">
-        <h3 class="header_h3">Gastado devito </h3>
-        <h2 id="texto_div" class="header_h2">400€</h2>
-      </div>     
+        <p class="header_p3">Gastado devito </p>
+        <p id="texto_div" class="header_p2">400€</p>
+      </div>
       <!-- Gastado tarjeta-->
       <div class="header_div">
-        <h3 class="header_h3">Gastado tarjeta</h3>
-        <h2 id="texto_tarjeta" class="header_h2">1000€</h2>
+        <p class="header_p3">Gastado tarjeta</p>
+        <p id="texto_tarjeta" class="header_p2">1000€</p>
       </div>
       <!-- Prevision de gastos fijos -->
       <div class="header_div">
-        <h3 class="header_h3">Prevision de gastos fijos</h3>
-        <h2 id="texto_prevision_gasto" class="header_h2">2000€</h2>
+        <p class="header_p3">Prevision de gastos fijos</p>
+        <p id="texto_prevision_gasto" class="header_p2">2000€</p>
       </div>
       <!-- Prevision de dinero ahorrado -->
       <div class="header_div">
-        <h3 class="header_h3">Prevision de dinero ahorrado</h3>
-        <h2 id="texto_prevision_ahorrado" class="header_h2">4000€</h2>
+        <p class="header_p3">Prevision de dinero ahorrado</p>
+        <p id="texto_prevision_ahorrado" class="header_p2">4000€</p>
       </div>
     </header>
-    <section>
-      <article></article>
+
+    <section id="seccion_principal">
+      <article id="sp_navegacion">
+        <div id="sp_registros">
+          <p id="sp_registros_p1">Registros:</p>
+          <p id="sp_registros_p2">400/500</p>
+        </div>
+        <div id="sp_mostrar_disable" class="sp_mostrar">
+          <p class="sp_mostrar_button">Mostrar todos</p>
+        </div>
+        <div id="sp_mostrar_todos" class="sp_mostrar">
+          <button class="sp_mostrar_button">Mostrar todos</button>
+        </div>
+        <div id="sp_duplicados" class="sp_mostrar">
+          <button class="sp_mostrar_button">Duplicados</button>
+        </div>
+        <div id="sp_vacio">
+          <p>Vacio</p>
+        </div>
+        <nav id="sp_nav">
+          <button class="sp_boton">B</button>
+          <button class="sp_boton">+</button>
+          <button class="sp_boton">T</button>
+          <button class="sp_boton">L</button>
+          <button class="sp_boton">R</button>
+          <button class="sp_boton">F</button>
+          <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre">
+            <button type="submit">Enviar</button>
+          </form>
+        </nav>
+      </article>
       <article></article>
       <article>
-        <nav></nav>
+
       </article>
+      <article></article>
     </section>
-    <section>
-      
-    </section>
+
 
   </main>
 

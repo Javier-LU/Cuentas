@@ -1,34 +1,84 @@
-#header_main{
-    
+/* Estilo de header principal de main */
+#header_main{    
     display: flex;
     gap: 20px;
     margin-top: 40px;
     margin-bottom: 40px;
-    
+    display: flex;
    
+    justify-content: center;
 }
 
+/* Estilo de los contenedores del header de main */
 .header_div{
     background-color: white;
     padding-left: 30px;
     padding-right: 30px;
     border-radius: 20px;
     box-shadow: 6px 5px 14px  rgba(0, 0, 0, 0.4);
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
-
 }
 
-.header_h3{
+/* Color del texto h3 de los div */
+.header_p3{
     color: gray;
 }
 
-.header_h2{
+/* Salvo la orientación, el color se modificará en js */
+.header_p2{
     text-align: center;
     color: red;
+    font-size: 20px;
 }
-
 #texto_prevision_ahorrado{
     color: green;
+}
+
+/* -------------------------------------------- */
+/* Estilo de la secton principal de main */
+/* -------------------------------------------- */
+
+#seccion_principal{
+    display: flex;
+    justify-content: center;
+}
+
+#sp_navegacion{
+    position:relative;
+    display: flex;
+    width: 1100px;
+    background-color: white;
+    gap: 40px;
+}
+
+/* Estilo del div que contaviliza los registros */
+#sp_registros{
+    position: absolute;
+    z-index: 9;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px 20px 0 0;
+}
+#sp_registros_p1{
+    color: gray;
+}
+#sp_registros_p2{
+    font-size:18px;
+}
+
+/* Mostrar todos y duplicados */
+.sp_mostrar{
+    position: absolute;
+    left: 165px;
+    z-index: 8;
+}
+.sp_mostrar_button{
+height: 83px;
+width: 130px;
+padding-left: 20px;
+padding-right: 10px;
 }
