@@ -7,10 +7,7 @@ body_header_right defino los estilos de los botones e imagenes de la derecha. */
   color: white;
   padding-left: 18px;
   border-radius: 0 0 50px 50px;
-  margin-top: -10px;
-  /* He tenido un pequeño problema con el header que me generaba un espacio entre el inicio de la web y el nav. */
-
-
+  margin-top: -10px; /* He tenido un pequeño problema con el header que me generaba un espacio entre el inicio de la web y el nav. */
   padding-left: 18px;
   border-bottom: 10px solid rgba(0, 0, 0, 0.2);
   border-radius: 0 0 50px 50px;
@@ -26,7 +23,7 @@ body_header_right defino los estilos de los botones e imagenes de la derecha. */
 /* Estilo general para el ul del nav */
 #Cabecera nav ul {
   display: flex;
-  gap: 40px;
+  gap: 20px;
 }
 
 /* Estilo para los li dentro del ul, elimino los estilos de las listas y los ordenamos */

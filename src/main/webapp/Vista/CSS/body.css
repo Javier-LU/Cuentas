@@ -1,7 +1,7 @@
 /* Defino la imagen de fondo y la estructura de grid */
 body {
-  background-image: url("../Photos/Wallpaper/Wallpaper.jpg");
-  background-repeat: repeat;
+  /* background-image: url("../Photos/Wallpaper/Wallpaper.jpg");
+  background-repeat: repeat; */
   background-size: 450px;
   display: grid;
   grid-template-areas:
@@ -16,6 +16,7 @@ body {
 /* Defino el grid area y en el body_header defino su estilo */
 #Cabecera {
   grid-area: header;
+  background-color: white;
 }
 
 /* Defino un área y estilo para la sección principal */

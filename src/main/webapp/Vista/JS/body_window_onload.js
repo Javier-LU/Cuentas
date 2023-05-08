@@ -3,7 +3,7 @@
 var cuenta = document.getElementById('cuenta');
 var ahorro = document.getElementById('ahorro');
 var resumenes = document.getElementById('resumenes');
-var configuracion = document.getElementById('configuracion');
+var configuracion = document.getElementById('Cabecera_derecha_li');
 
 // Al cargar la pagina, pregunto por el titulo de la misma y dependiendo de cual sea, modifico el estilo de ese elemento. 
 window.onload = function() {

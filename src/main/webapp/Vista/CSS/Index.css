@@ -1,0 +1,34 @@
+#header_main{
+    
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    
+   
+}
+
+.header_div{
+    background-color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 20px;
+    box-shadow: 6px 5px 14px  rgba(0, 0, 0, 0.4);
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+
+}
+
+.header_h3{
+    color: gray;
+}
+
+.header_h2{
+    text-align: center;
+    color: red;
+}
+
+#texto_prevision_ahorrado{
+    color: green;
+}

@@ -2,7 +2,7 @@
 
 var boton = document.getElementById('boton_usuarios');
 var contenedor = document.getElementById('CD_boton');
-var despliegue = document.getElementById('boton_usuarios_despliege');
+var despliegue = document.getElementById('boton_usuarios_desliegue');
 
 // Este evento listener controla la aparición y desaparición del menú emergente del botón de usuario. Si se hace clic en el botón, el menú emergente aparecerá si estaba oculto, y viceversa. Esto se realiza comprobando la opacidad del botón.
 document.getElementById("boton_usuarios").addEventListener("click", function() {

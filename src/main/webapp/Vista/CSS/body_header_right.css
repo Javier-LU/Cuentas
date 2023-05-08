@@ -3,9 +3,9 @@ body_header_right defino los estilos de los botones e imagenes de la derecha. */
 
 /* Modificacion del gap  para el ul del nav que alberga el icono de usuario y el nombre del usuario */
 #Cabecera nav #Cabecera_derecha {
-    gap: 0;
+    gap: 20px;
     padding-right: 20px;
-    padding-left: 325px;
+    padding-left: 350px;
 }
 
 /* Animación para la imagen de la rueda */
@@ -18,6 +18,7 @@ body_header_right defino los estilos de los botones e imagenes de la derecha. */
     /* Nombre de la animacion */
     animation-timing-function: linear;
     /* La animación será lineal */
+    opacity: 100%;
 }
 
 @keyframes rotar {
