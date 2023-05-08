@@ -1,0 +1,83 @@
+/* Estilos de la sección main llamada eliminar_usuario que se activa al pulsar el botón de eliminar usuario */
+
+/* Estilo de la sección con id eliminar usuario */
+#eliminar_usuario {
+    /* Defino una posición absoluta para quitarle del flujo posicionarlo en el centro */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Ordeno todos los elementos en columna y con un espacio proporcional. */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Estilo */
+    background-color: white;
+    border: 8px solid #f92c0c;
+    border-radius: 20px;
+    height: 300px;
+    width: 600px;
+    opacity: 0;
+}
+
+ /* Estilo del primer div */
+#eliminar_usuario_div_1 {
+    background-color: #f92c0c;
+    color: white;
+    padding-left: 30px;
+    font-size: 20px;
+    display: flex;
+    justify-content: start;    
+}
+
+/* Estilo del segundo div */
+#eliminar_usuario_div_2 {
+    padding-left: 30px;
+    padding-right: 20px;
+    padding-top: 15px;
+}
+
+/* Estilo del tercer div */
+#eliminar_usuario_div_3 {
+    display: flex;
+   
+    justify-content: right;
+    margin-top: 20px;
+    margin-right: 40px;
+    list-style: none;
+}
+
+
+/* Estilo general de los botones de estos div */
+#eliminar_usuario_div_3 button {
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Estilo especifico del boton aceptar */
+#eliminar_aceptar {
+    background-color: #f92c0c;
+}
+#eliminar_aceptar:hover {
+    background-color: #a71600;
+}
+
+/* Estilo especifico del boton cancelar */
+#eliminar_cancelar {
+    background-color: #00b828;
+}
+#eliminar_cancelar:hover {
+    background-color: #016717;
+}
+

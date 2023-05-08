@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ejemplo de bocadillo redondo</title>
+    <style>
+      .bocadillo-redondo {
+        position: relative;
+        height: 150px;
+        width: 300px;
+        background: white;
+        border-radius: 50%;
+        box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
+      }
+      .bocadillo-redondo:before {
+        border: 25px solid white;
+        content: '';
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        position: absolute;
+        bottom: -44px;
+        right: 75px;
+        transform: rotate(-8deg);
+      }
+      /* Estilos para quitar los estilos de un botón */
+      .sin-estilo {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bocadillo-redondo">
+      <button class="sin-estilo">Haz clic aquí</button>
+    </div>
+  </body>
+</html>

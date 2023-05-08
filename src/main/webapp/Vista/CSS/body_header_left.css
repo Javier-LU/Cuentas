@@ -1,0 +1,78 @@
+/* Defino los estilos de las imagenes y enlaces de la izquierda del menu nav y en
+body_header_right defino los estilos de los botones e imagenes de la derecha. */
+
+/* Estilo general de la cabecera */
+#Cabecera {
+  background: linear-gradient(to bottom right, #236BAF, #0cc2f9);
+  color: white;
+  padding-left: 18px;
+  border-radius: 0 0 50px 50px;
+  margin-top: -10px;
+  /* He tenido un pequeño problema con el header que me generaba un espacio entre el inicio de la web y el nav. */
+
+
+  padding-left: 18px;
+  border-bottom: 10px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 50px 50px;
+  margin-top: -10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Ordeno los elemenotos dentro del nav de la cabecera */
+#Cabecera nav {
+  display: flex;
+}
+
+/* Estilo general para el ul del nav */
+#Cabecera nav ul {
+  display: flex;
+  gap: 40px;
+}
+
+/* Estilo para los li dentro del ul, elimino los estilos de las listas y los ordenamos */
+#Cabecera nav ul li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  opacity: 60%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 4px;
+  transition: background-color 0.3s ease;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Estilo para cuando el cursos se posiciona arriba */
+#Cabecera nav ul li:hover {
+  background-color: #41d3ff;
+  opacity: 100%;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para cuando pasa a estado activado */
+#Cabecera nav ul li:active {
+  background-color: #0cc2f9;
+  color: white;
+
+}
+
+
+/* Estilo para los enlaces que están dentro de los li */
+#Cabecera nav ul li a {
+  color: white;
+  font-size: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+  display: flex;
+  align-items: center;
+
+}
+
+/* Estilo para las imágenes al lado de los textos */
+#Cabecera nav ul li img {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}

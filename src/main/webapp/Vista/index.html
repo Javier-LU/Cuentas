@@ -1,53 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/body.css">
+  <link rel="stylesheet" href="CSS/body.css">
+  <link rel="stylesheet" href="CSS/body_header_left.css">
+  <link rel="stylesheet" href="CSS/body_header_right.css">
+  <link rel="stylesheet" href="CSS/body_warning.css">
 
   <title>Index</title>
 </head>
+
 <body>
   <header id="Cabecera">
-    <h3>Tus Cuentas Personales</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="#cuenta">
-              <img src="Photos/Iconos aplicacion/Blancos/BCuentas.png" alt="Descripción de la imagen">
-                  Cuenta
-            </a>
-          </li>
-          <li>
-            <a href="#ahorro">
-              <img src="Photos/Iconos aplicacion/Blancos/BAhorro.png" alt="Descripción de la imagen">
-              Ahorro
-            </a>
-          </li>
-          <li>
-            <a href="#resumenes">
-              <img src="Photos/Iconos aplicacion/Blancos/Resumenes.png" alt="Descripción de la imagen">
-              Resúmenes
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <nav>
+      <ul>
+        <li id="cuenta">
+          <a href="#cuenta">
+            <img src="Photos/Iconos aplicacion/Blancos/BCuentas.png" alt="Cuentas">
+            Cuenta
+          </a>
+        </li>
+        <li id="ahorro">
+          <a href="#ahorro">
+            <img src="Photos/Iconos aplicacion/Blancos/BAhorro.png" alt="Ahorros">
+            Ahorro
+          </a>
+        </li>
+        <li id="resumenes">
+          <a href="#resumenes">
+            <img src="Photos/Iconos aplicacion/Blancos/Resumenes.png" alt="Resumenes">
+            Resúmenes
+          </a>
+        </li>
+      </ul>
+
+      <ul id="Cabecera_derecha">
+        <li id="Cabecera_derecha_li">
+          <a href="#configuracion">
+            <img src="Photos/Iconos aplicacion/Blancos/BConfiguracion.png" alt="Configuración">
+          </a>
+        </li>
+
+        <li id="CD_boton">
+          <button id="boton_usuarios">
+            <img src="Photos/Iconos aplicacion/Blancos/Usuario.png" alt="Icono de usuario">
+            <h2>Usuario</h2>
+          </button>
+
+          <div id="boton_usuarios_despliege">
+            <button id="eliminarCuenta">
+              Eliminar usuario
+            </button>
+            <hr>
+            <button>
+              Cambiar usuario
+            </button>
+          </div>
+        </li>
+      </ul>
+    </nav>
   </header>
 
   <main>
-    <section id="inicio">
-        <header><h1>nooooooooooooooooo</h1></header>
-      <h1>Bienvenido al sitio web</h1>
-      <p>Este es un ejemplo de una estructura HTML5 semántica.</p>
+    <section id="eliminar_usuario">
+      <article>
+        <div id="eliminar_usuario_div_1">
+          <h2>Warning</h2>
+        </div>
+        <div id="eliminar_usuario_div_2">
+          <h2>¿Estas seguro de eliminar el usuario actual?</h2>
+          <p>Esta acción no se puede deshacer una vez confirmada. Todos los registros relacionados con esta cuenta se
+            eliminarán permanentemente.</p>
+        </div>
+        <div>
+          <ul id="eliminar_usuario_div_3">
+            <li>
+              <button id="eliminar_aceptar">
+                Aceptar
+              </button>
+            </li>
+            <li>
+              <button id="eliminar_cancelar">
+                Cancelar
+              </button>
+            </li>
+          </ul>
+        </div>
+      </article>
     </section>
 
+
+
     <section id="acerca-de">
-        <ul>
-            <li><a href="#inicio">Cuenta</a></li>
-            <li><a href="#acerca-de">Ahorro</a></li>
-            <li><a href="#servicios">Resumenes</a></li>
-            
-          </ul>
+      <ul>
+        <li><a href="#inicio">Cuenta</a></li>
+        <li><a href="#acerca-de">Ahorro</a></li>
+        <li><a href="#servicios">Resumenes</a></li>
+
+      </ul>
       <h2>Acerca de</h2>
       <p>Aquí puedes incluir información sobre ti o tu empresa.</p>
     </section>
@@ -66,5 +118,10 @@
   <footer>
     <p>&copy; 2023 Poryecto final de primero de programación de aplicaciones web.</p>
   </footer>
+  <script src="../JS/body_header_right.js"></script>
+  <script src="../JS/Body_warning.js"></script>
+  <script src="../JS/body_window_onload.js"></script>
+
 </body>
+
 </html>

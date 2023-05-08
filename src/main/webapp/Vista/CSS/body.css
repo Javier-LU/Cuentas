@@ -1,57 +1,34 @@
+/* Defino la imagen de fondo y la estructura de grid */
 body {
-    background-image: url("../Photos/Wallpaper/Wallpaper.jpg");
-    display: grid;
-    grid-template-areas: ;
-
+  background-image: url("../Photos/Wallpaper/Wallpaper.jpg");
+  background-repeat: repeat;
+  background-size: 450px;
+  display: grid;
+  grid-template-areas:
+    ". header ."
+    ". main ."
+    ". footer .";
+  grid-template-columns: auto 1200px auto;
+  grid-template-rows: 90px auto 70px;
+  min-height: 100vh;
 }
 
+/* Defino el grid area y en el body_header defino su estilo */
 #Cabecera {
-    background: linear-gradient(to bottom right, #236BAF, #0cc2f9);
-    color: white;
-    padding: 20px;
-  }
-
-  #Cabecera nav ul li a img {
-    width: 50px;
-    height: 50px;
-    margin-right: 15px;
-    
-  }
-
-#Cabecera nav ul {
-  background-color: black;
-  display: flex;
-  flex-direction: row; /* Establece la dirección en horizontal (fila) */
-  flex-wrap: nowrap; /* Evita que los elementos se envuelvan */
-  gap: 40px;
-
-  
+  grid-area: header;
 }
 
-  #Cabecera nav ul li {
-    list-style: none;
-    gap: 40px;
-    text-decoration: none;
+/* Defino un área y estilo para la sección principal */
+main {
+  grid-area: main;
+}
 
-  
-
-    
-  }
-
-  #Cabecera nav ul li a {
-    color: white;
-    font-size: 30px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    outline: none;
-  text-decoration: none;
-  padding: 2px 1px 0;
+/* Defino un área y estilo para el pie de página */
+footer {
+  grid-area: footer;
   display: flex;
-  align-items: center;
- 
-  }
-
-  /* Estilos para el título de la página */
-  h1 {
-    font-size: 2.5em;
-    margin-top: 0;
-  }
+  justify-content: center;
+  color: white;
+  border-radius: 50px 50px 0 0;
+  background: linear-gradient(to top right, #236BAF, #0cc2f9);
+}

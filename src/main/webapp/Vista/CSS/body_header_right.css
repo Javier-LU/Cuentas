@@ -1,0 +1,172 @@
+/* Defino los estilos de las imagenes y enlaces de la izquierda del menu nav y en
+body_header_right defino los estilos de los botones e imagenes de la derecha. */
+
+/* Modificacion del gap  para el ul del nav que alberga el icono de usuario y el nombre del usuario */
+#Cabecera nav #Cabecera_derecha {
+    gap: 0;
+    padding-right: 20px;
+    padding-left: 325px;
+}
+
+/* Animación para la imagen de la rueda */
+#Cabecera #Cabecera_derecha_li a img:hover {
+    animation-duration: 3s;
+    /* La duración de la animación */
+    animation-iteration-count: infinite;
+    /* Animación infinita */
+    animation-name: rotar;
+    /* Nombre de la animacion */
+    animation-timing-function: linear;
+    /* La animación será lineal */
+}
+
+@keyframes rotar {
+
+    /* se utiliza para definir animaciones CSS */
+    from {
+        transform: rotate(0deg);
+        /* Defino la posición inicial */
+    }
+
+    to {
+        transform: rotate(360deg);
+        /* Defino la posición final */
+    }
+}
+
+/* Estilo para el contenedor de la imagen de la rueda*/
+#Cabecera #Cabecera_derecha_li a {
+    padding-left: 14px;
+    padding-top: 14px;
+    padding-bottom: 15px;
+    padding-right: 0px;
+
+}
+
+/* Estilo al pasar a activo la rueda*/
+#Cabecera #Cabecera_derecha_li a:active {
+    background-color: #0cc2f9;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Elimino el color de fondo para cuando esta activado */
+#Cabecera #Cabecera_derecha_li:active {
+    background-color: unset;
+}
+
+/* Estilo el boton usuario */
+#Cabecera nav #Cabecera_derecha li button {
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Defino la posicion relative en este contenedor que contendrá un div de posición absoluta*/
+#Cabecera nav #Cabecera_derecha #CD_boton {
+    opacity: 60%;
+    position: relative;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Pasa al 100% cuando el raton esta encima */
+#Cabecera nav #Cabecera_derecha #CD_boton:hover {
+    opacity: 100%;
+}
+
+
+#Cabecera nav #Cabecera_derecha #CD_boton div {
+    /* Al inicio, este div estará invisible y no se podrá interactuar con el hasta que
+    se active el boton */
+    pointer-events: none;
+    opacity: 0;
+
+    /* Posición del div */
+    position: absolute;
+    bottom: -204px;
+    left: 0;
+    width: 140px;
+    height: 200px;
+
+    /* Como se organizan los elementos */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Color del fondo del div */
+    background-color: #0cc2f9;
+    border-radius: 0 0 25px 25px;
+
+    /* Estilo del borde del div */
+    border-style: solid;
+    border: 10px dashed #0cc2f9;
+    border-top-width: 0;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 5px;
+}
+
+/* Estilo general de los botones del div */
+#Cabecera nav #Cabecera_derecha #CD_boton div button {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    border-radius: 10px;
+    color: #000000;
+    border: none;
+    outline: none;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+/* Estilo especifico del "bonton eliminar" cuenta */
+#Cabecera nav #Cabecera_derecha #CD_boton div #eliminarCuenta {
+    background-color: #f92c0c;
+    color: white;
+    transition: background-color 0.3s ease;
+
+}
+
+/* Estilo especifico del bonton "eliminar cuenta" cuando el raton pasa por encima */
+#Cabecera nav #Cabecera_derecha #CD_boton div #eliminarCuenta:hover {
+    background-color: #a71600;
+    color: #ffffff;
+
+}
+
+/* Estilo especifico del bonton "eliminar cuenta" cuando se activa */
+#Cabecera nav #Cabecera_derecha #CD_boton div #eliminarCuenta:active {
+    background-color: #681002;
+    color: #ffffff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+}
+
+/* Estilo general de los botones de los div de CD_Boton cuando el raton pasa por encima */
+#Cabecera nav #Cabecera_derecha #CD_boton div button:hover {
+    background-color: #0888c2;
+    color: #ffffff;
+}
+
+/*Estilo general de los botones de los div de CD_Boton cuando se activa */
+#Cabecera nav #Cabecera_derecha #CD_boton div button:active {
+    background-color: #0c77a2;
+    color: #ffffff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/*Estilo general de la linea hr  de los div de CD_Boton */
+#Cabecera nav #Cabecera_derecha #CD_boton div hr {
+    width: 80%;
+    height: 2px;
+    background-color: #1690b6;
+    border: none;
+    margin: 20px auto;
+}
