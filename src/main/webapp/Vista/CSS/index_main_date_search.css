@@ -1,0 +1,71 @@
+#rango_fecha_relative{
+position: relative;
+opacity: 0;
+pointer-events: none;
+}
+
+#rango_fecha{
+
+    position: absolute;
+    left: 780px;
+    border-radius: 20px;
+    z-index: 40;
+    width: 200px;
+    text-align: center;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: white;
+}
+#rango_fecha form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+#texto_rango_Fecha{
+    background: linear-gradient(to top right, #236BAF, #0cc2f9);
+    color: white;
+    min-width: 100%;
+    border-radius: 20px 20px 0  0 ;
+
+}
+
+#rango_fecha_botones_div{
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+ .rango_fechas_buttons{
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0cc2f9;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    
+ }
+
+ .rango_fechas_buttons:hover {
+    background-color: #1b4f82;    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .rango_fechas_buttons:active {   
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  #Texto_rango_Fecha{
+    color: red;
+    width: 150px;
+    height: 16px;
+    padding: 2px;
+    border: 1px solid red;
+  }

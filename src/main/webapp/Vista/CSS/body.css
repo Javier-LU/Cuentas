@@ -1,4 +1,5 @@
 /* Defino la imagen de fondo y la estructura de grid */
+
 body {
   background-image: url("../Photos/Wallpaper/Wallpaper.jpg");
   background-repeat: repeat;
@@ -9,8 +10,10 @@ body {
     ". main ."
     ". footer .";
   grid-template-columns: auto 1200px auto;
+  
   grid-template-rows: 90px auto 70px;
   min-height: 100vh;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 /* Defino el grid area y en el body_header defino su estilo */
@@ -22,10 +25,15 @@ body {
 /* Defino un área y estilo para la sección principal */
 main {
   grid-area: main;
+  /* overflow: hidden; */
 }
 
 /* Defino un área y estilo para el pie de página */
 footer {
+  min-height: 100%;
+  z-index: 30;
+  position: relative;
+  bottom: -10px;
   grid-area: footer;
   display: flex;
   justify-content: center;

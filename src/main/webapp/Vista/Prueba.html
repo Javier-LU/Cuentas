@@ -4,39 +4,75 @@
     <meta charset="utf-8">
     <title>Ejemplo de bocadillo redondo</title>
     <style>
-      .bocadillo-redondo {
-        position: relative;
-        height: 150px;
-        width: 300px;
-        background: white;
-        border-radius: 50%;
-        box-shadow: 1px 12px 33px rgba(0, 0, 0, 0.5);
-      }
-      .bocadillo-redondo:before {
-        border: 25px solid white;
-        content: '';
-        border-left-color: transparent;
-        border-bottom-color: transparent;
-        border-right-color: transparent;
-        position: absolute;
-        bottom: -44px;
-        right: 75px;
-        transform: rotate(-8deg);
-      }
-      /* Estilos para quitar los estilos de un botón */
-      .sin-estilo {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        margin: 0;
-        outline: none;
-      }
+    /* #rango_fecha_relative{
+position: relative;
+} */
+
+
+/* #rango_fecha{
+    position: absolute;
+    left: 800px;
+    padding: 10px;
+    border-radius: 20px;
+    z-index: 40;
+    width: 150px;
+    text-align: center;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    background-color: white;
+}
+#rango_fecha form{
+    
+    display: flex;
+    flex-direction: column;
+    align-content: left;
+    align-items: left;
+    gap: 5px;
+    background-color: aquamarine;
+    
+} */
+#texto_rango_Fecha222{
+   
+  background-color: aquamarine;
+    min-width: 100%;
+    max-height: 100%;
+    border-radius: 20px 20px 0  0 ;
+   
+}
+/* #texto_rango_Fecha222 p{
+    background-color: aquamarine;
+} */
+
     </style>
   </head>
   <body>
-    <div class="bocadillo-redondo">
-      <button class="sin-estilo">Haz clic aquí</button>
-    </div>
+    <form id="mi_formulario" action="/" method="POST">
+      <label for="fecha1">Fecha 1:</label>
+      <input type="date" id="fecha1" name="fecha1" >
+    
+      <label for="fecha2">Fecha 2:</label>
+      <input type="date" id="fecha2" name="fecha2" >
+    
+      <button type="submit">Enviar</button>
+    </form>
+    <script>
+      window.onload = function() {
+        alert("La fecha 2 no puede ser superior a la fecha 1.");
+      }
+      var miFormulario = document.getElementById("mi_formulario");
+    
+      miFormulario.addEventListener("submit", function(event) {
+        var fecha1 = new Date(document.getElementById("fecha1").value);
+        var fecha2 = new Date(document.getElementById("fecha2").value);
+        var fechaActual = new Date();
+    
+        if (fecha1 > fechaActual) {
+          event.preventDefault();
+          alert("La fecha 1 no puede ser superior a la fecha actual.");
+        } else if (fecha2 > fecha1) {
+          event.preventDefault();
+          alert("La fecha 2 no puede ser superior a la fecha 1.");
+        }
+      });
+    </script>
   </body>
 </html>

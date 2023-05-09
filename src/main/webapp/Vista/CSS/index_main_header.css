@@ -1,0 +1,34 @@
+/* Estilo de header principal de main */
+#header_main {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    display: flex;
+
+    justify-content: center;
+}
+
+/* Estilo de los contenedores del header de main */
+.header_div {
+    background-color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 20px;
+    box-shadow: 6px 5px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Color del texto h3 de los div */
+.header_p3 {
+    color: gray;
+}
+
+/* Salvo la orientación, el color se modificará en js */
+.header_p2 {
+    text-align: center;
+    color: red;
+    font-size: 20px;
+}
+#texto_prevision_ahorrado {
+    color: green;
+}

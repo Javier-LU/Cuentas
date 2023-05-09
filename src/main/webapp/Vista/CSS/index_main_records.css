@@ -1,0 +1,269 @@
+/* Estilo de los contenedores del header de main */
+#registros {
+    /* transform: translate(-50%, -50%); */
+    display: flex;
+    flex-direction: column;    
+    margin-top: 60px;
+    z-index: 20;
+    width: 1200px;
+    height: 1000px;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 20px 10px 40px rgba(0, 0, 0, 0.5);
+    margin-bottom: 60px;
+}
+
+#r_nav {
+    
+    margin-top: 30px;
+    display: flex;
+    justify-content: left;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.r_nav_button {
+    font-size: 15px;
+    color: #38A8E4;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.r_nav_button:hover {
+    color: #184056;
+}
+
+.r_nav_imagen {
+    opacity: 0;
+    height: 12px;
+    position: absolute;
+}
+
+#up_Fecha {
+    opacity: 1;
+}
+
+#up_gasto {
+    height: 10px;
+    opacity: 1;
+    margin-left: 10px;
+}
+
+.r_nav_div {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* nav categorías */
+
+#div_fecha {
+    width: 80px;
+    padding-left: 20px;
+
+
+}
+
+#div_concepto {
+    width: 100px;
+    padding-left: 20px;
+}
+
+#div_importe {
+    width: 90px;
+    padding-left: 30px;
+
+}
+
+#div_saldo {
+    width: 70px;
+    padding-left: 10px
+}
+
+#r_nav_iconos {
+    color: gray;
+    padding-left: 50px;
+}
+
+#div_categoria {
+    padding-left: 50px;
+
+}
+
+#r_nav_subcategoria {
+    color: gray;
+    padding-left: 20px;
+}
+
+#div_anotaciones {
+    padding-left: 20px;
+}
+
+#div_tipo {
+    padding-left: 40px;
+}
+
+/* -------------------------- */
+
+/* Registros */
+#contenedor {
+    /* background-color: aquamarine; */
+    margin-left: 25px;
+    margin-right: 25px;
+    height: 890px;
+    border-radius: 40px;
+    border: 2px dashed grey;
+    box-shadow: inset 0px 0px 20px 1px rgba(0, 0, 0, 0.8);
+    display: flex;
+
+    overflow: hidden;
+}
+
+.contenedor_fondo_registro {
+
+transform: translate(0, -200%);
+    height: 75px;
+    display: flex;
+    margin-top: 15px;
+    min-width: 100%;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+
+}
+
+.contenedor_fondo_registro:hover {
+    background-color: rgb(181, 181, 181);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+}
+
+.contenedor_registro {
+    display: flex;
+    background-color: rgb(255, 134, 90);
+    width: 1090px;
+    height: 40px;
+    align-items: center;
+    margin: 7px;
+    /* margin-left: 15px; */
+    padding: 10px;
+    border-radius: 15px;
+
+
+}
+
+/* Iconos */
+#contenedor_registro_imagenes {
+    display: flex;
+}
+
+.contenedor_registro img {
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* contenedor */
+.cr_imput {
+    box-sizing: border-box;
+    height: 40px;
+    width: 100px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border: 2px dashed #646464;
+    padding-left: 10px;
+}
+
+.contenedor_registro:hover .cr_imput {
+    border: 2px dashed #646464;
+}
+
+.contenedor_registro .cr_imput:hover {
+    border: 2px dashed #38A8E4;
+}
+
+
+/* nav categorías */
+#cr_fecha {
+    border-radius: 20px 0 0 20px;
+}
+
+#cr_importe {
+    width: 90px;
+}
+
+#cr_saldo {
+    width: 90px;
+}
+
+#cr_concepto {
+    width: 140px;
+}
+
+
+#cr_categoria {
+    width: 124px;
+    /* margin-bottom: 4px; */
+    padding: 0;
+    font-size: 12px;
+}
+
+#cr_subcategoria {
+    width: 124px;
+    /* margin-bottom: 4px; */
+    padding: 0;
+    font-size: 12px;
+}
+
+#cr_anotaciones {
+    width: 130px;
+    margin-top: 4px;
+}
+
+
+.tarjeta {
+    position: relative;
+    margin-top: 4px;
+
+}
+
+/* -------------------------- */
+
+
+/* Tipo de gasto */
+
+.contenedor_tipo_tarjeta {
+    position: absolute;
+    top: -22px;
+}
+
+.contenedor_tipo_tarjeta {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+        "credito  fecha"
+        " tipo  tipo";
+
+}
+
+#cr_credito {
+    grid-area: credito;
+    height: 20px;
+    width: 70px;
+    padding: 0;
+}
+
+#cr_fecha_tarjeta {
+    grid-area: fecha;
+    height: 20px;
+    width: 80px;
+}
+
+#cr_tipo_tarjeta {
+    grid-area: tipo;
+    height: 20px;
+    width: 150px;
+}

@@ -1,0 +1,208 @@
+
+/* -------------------------------------------- */
+/* Estilo de la secton principal de main */
+/* -------------------------------------------- */
+
+
+
+#sp_navegacion {    
+    position: relative;
+    display: flex;
+    margin-left: 50px;
+}
+
+/* un div vacio solo para proyectar la sombra*/
+.sombra {
+    position: absolute;
+    width: 1095px;
+    height: 70px;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 20px 10px 40px rgba(0, 0, 0, 0.5);
+    background-color: rgb(255, 255, 255);
+    color: white;
+}
+
+/* Estilo del div que contaviliza los registros */
+#sp_registros {
+    position: absolute;
+    z-index: 9;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px 20px 0 0;
+}
+#sp_registros_p1 {
+    color: gray;
+}
+#sp_registros_p2 {
+    font-size: 16px;
+}
+
+/* Mostrar todos los registros y mostrar duplicados */
+/* Estilo general */
+.sp_mostrar_button {
+    position: absolute;
+    left: 140px;
+    z-index: 8;
+    height: 70px;
+    width: 130px;
+    padding-left: 30px;
+    padding-right: 10px;
+    border-radius: 0 20px 0 0;
+    border: none;
+    font-size: 13px;
+}
+
+/* Estilo especifico para mostrar todos disable */
+#sp_mostrar_disable {
+    opacity: 1;
+    background-color: gray;
+    transform: translate(-50px, -13px);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 20px;
+}
+
+/* Estilo especifico para el boton mostrar todos */
+#sp_mostrar_todos {
+    opacity: 1;
+    pointer-events: none;
+    background-color: #38A8E4;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+#sp_mostrar_todos:hover {
+    background-color: #1A83BA;
+}
+
+/* Estilo especifico para el boton duplicados */
+#sp_duplicados {
+    opacity: 0;
+    pointer-events: none;
+    background-color: #f92c0c;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+#sp_duplicados:hover {
+    background-color: #a71600;
+}
+
+/* barra vacia de fondo*/
+#sp_vacio {    
+    position: absolute;
+    width: 285px;
+    height: 70px;
+    left: 255px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 40px;    
+}
+#sp_vacio2{
+    position: relative;
+ 
+    margin-bottom: 30px
+
+}
+#Texto_rango_Fecha2{
+position: absolute;
+width: 200px;
+    top:-5px;
+}
+#Texto_sp_vacio2{
+    position: absolute;
+    width: 200px;
+   top: -28px;
+    
+}
+
+#sp_vacio form {
+    display: flex;
+    align-items: center;
+    color: #38A8E4;
+    cursor: pointer;
+}
+#sp_vacio form:hover {
+    color: #2a769e;
+}
+
+
+/* Nav */
+#sp_nav {
+    position: absolute;
+    left: 590px;
+    z-index: 8;
+    display: flex;
+    background-color: #38A8E4;
+    border-radius: 25px 25px 0 0;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+/* Nav: botones */
+.sp_boton {
+    height: 70px;
+    width: 50px;
+    background-color: #38A8E4;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+/* Nav: botones especificos */
+#sp_basura {
+    border-radius: 0 25px 0 0;
+}
+#sp_boton_busqueda {
+    height: 35px;
+    border-radius: 0 20px 20px 0;
+}
+.sp_boton:hover {
+    background-color: #1A83BA;
+}
+
+/* Nav: las imagenes de los botones */
+#sp_nav img {
+    height: 30px;
+    width: 30px;
+}
+
+/* Nav: el from de buscar */
+#sp_nav form {
+    display: flex;
+    align-items: center;
+}
+
+
+/* Nav: el imput de buscar */
+#sp_busqueda {
+    height: 5px;
+    width: 100px;
+    border: 2px solid #ccc;
+    border-radius: 20px 0 0 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+#sp_busqueda::placeholder {
+    color: #999;
+}
+#sp_busqueda:focus {
+    border-color: #0c77a2;   
+    box-shadow: 0px 0px 8px rgba(12, 119, 162, 0.5);
+}
+#sp_busqueda:hover {
+    background-color: #f5f5f5;
+}
