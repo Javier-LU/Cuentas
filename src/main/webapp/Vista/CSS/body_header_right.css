@@ -5,7 +5,7 @@ body_header_right defino los estilos de los botones e imagenes de la derecha. */
 #Cabecera nav #Cabecera_derecha {
     gap: 20px;
     padding-right: 20px;
-    padding-left: 350px;
+    padding-left: 450px;
 }
 
 /* Animación para la imagen de la rueda */
@@ -72,6 +72,10 @@ body_header_right defino los estilos de los botones e imagenes de la derecha. */
     opacity: 60%;
     position: relative;
     border-radius: 10px 10px 0 0;
+    font-size: 30px;
+}
+#boton_usuarios{
+    font-size: 30px;
 }
 
 /* Pasa al 100% cuando el raton esta encima */

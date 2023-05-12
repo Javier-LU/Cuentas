@@ -1,0 +1,94 @@
+/* Estilo de los contenedores del header de main
+donde va el encabezado de la tabla */
+
+
+/* Contenedor del nav. Aqui estan los botones que ordenaran la tabla */
+#r_nav {    
+    margin-top: 30px;
+    display: flex;
+    justify-content: left;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+/* Contenedor de las imagenes y los botones */
+.r_nav_div {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo general de los botones */
+.r_nav_button {
+    font-size: 15px;
+    color: #38A8E4;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.r_nav_button:hover {
+    color: #184056;
+}
+
+/* Estilo general de las imagenes que estan al lado de los botones (up/down) */
+.r_nav_imagen {
+    opacity: 0;
+    height: 12px;
+    position: absolute;
+}
+
+/* La tabla siempre aparecera ordenada de forma ascendente por fecha */
+#up_Fecha {
+    opacity: 1;
+}
+
+/* El icono de tipo de gasto es diferente a los demas*/
+#up_gasto {
+    height: 10px;   
+}
+
+/* Adapto manualmente la posicion de los botones para que coincidan con las celdas */
+#div_fecha {
+    width: 80px;
+    padding-left: 20px;
+}
+
+#div_concepto {
+    width: 100px;
+    padding-left: 20px;
+}
+
+#div_importe {
+    width: 90px;
+    padding-left: 30px;
+
+}
+
+#div_saldo {
+    width: 70px;
+    padding-left: 10px
+}
+
+#r_nav_iconos {
+    color: gray;
+    padding-left: 50px;
+}
+
+#div_categoria {
+    padding-left: 50px;
+
+}
+
+#r_nav_subcategoria {
+    color: gray;
+    padding-left: 20px;
+}
+
+#div_anotaciones {
+    padding-left: 20px;
+}
+
+#div_tipo {
+    padding-left: 40px;
+}

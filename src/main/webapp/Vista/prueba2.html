@@ -1,0 +1,61 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Ejemplo de bocadillo redondo</title>
+  <style>
+    #miElemento {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  transition: background-color 0.5s ease;
+}  
+</style>
+</head>
+
+<body>
+    <div id="form-container"></div>
+<script>
+// Simulando resultados de una consulta o datos obtenidos
+var resultados = [
+  { id: 1, nombre: 'Campo 1', valor: 'Valor 1' },
+  { id: 2, nombre: 'Campo 2', valor: 'Valor 2' },
+  { id: 3, nombre: 'Campo 3', valor: 'Valor 3' }
+];
+
+// Generación del HTML con elementos de formulario
+var formContainer = document.getElementById("form-container");
+
+resultados.forEach(function(row) {
+  var id = row.id;
+  var nombre = row.nombre;
+  var valor = row.valor;
+
+  // Crear elementos de formulario con IDs únicos
+  var label = document.createElement("label");
+  label.setAttribute("for", "input_" + id);
+  label.textContent = nombre;
+
+  var input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.setAttribute("id", "input_" + id);
+  input.setAttribute("name", "input_" + id);
+  input.setAttribute("value", valor);
+
+  // Agregar los elementos al contenedor
+  formContainer.appendChild(label);
+  formContainer.appendChild(input);
+  formContainer.appendChild(document.createElement("br"));
+});
+
+
+
+</script>
+</body>
+
+</html>
+
+

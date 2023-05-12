@@ -14,7 +14,7 @@
 /* un div vacio solo para proyectar la sombra*/
 .sombra {
     position: absolute;
-    width: 1095px;
+    width: 1145px;
     height: 70px;
     border-radius: 25px 25px 0 0;
     box-shadow: 20px 10px 40px rgba(0, 0, 0, 0.5);
@@ -59,7 +59,7 @@
 
 /* Estilo especifico para mostrar todos disable */
 #sp_mostrar_disable {
-    opacity: 1;
+    opacity: 0;
     background-color: gray;
     transform: translate(-50px, -13px);
     display: flex;
@@ -71,14 +71,17 @@
 /* Estilo especifico para el boton mostrar todos */
 #sp_mostrar_todos {
     opacity: 1;
-    pointer-events: none;
+    pointer-events: painted;
     background-color: #38A8E4;
     color: white;
     cursor: pointer;
     transition: background-color 0.5s ease;
 }
 #sp_mostrar_todos:hover {
+    
     background-color: #1A83BA;
+    transform: translateX(5px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo especifico para el boton duplicados */
@@ -92,12 +95,14 @@
 }
 #sp_duplicados:hover {
     background-color: #a71600;
+    transform: translateX(5px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-/* barra vacia de fondo*/
+/* barra entre mostrar todos y la barra del nav*/
 #sp_vacio {    
     position: absolute;
-    width: 285px;
+    width: 335px;
     height: 70px;
     left: 255px;
     background-color: white;
@@ -107,12 +112,7 @@
     padding-left: 30px;
     padding-right: 40px;    
 }
-#sp_vacio2{
-    position: relative;
- 
-    margin-bottom: 30px
 
-}
 #Texto_rango_Fecha2{
 position: absolute;
 width: 200px;
@@ -121,11 +121,15 @@ width: 200px;
 #Texto_sp_vacio2{
     position: absolute;
     width: 200px;
-   top: -28px;
-    
+   top: -28px;   
 }
 
-#sp_vacio form {
+#sp_vacio2{
+    position: relative; 
+    margin-bottom: 30px
+}
+
+#sp_vacio3 {
     display: flex;
     align-items: center;
     color: #38A8E4;
@@ -139,7 +143,7 @@ width: 200px;
 /* Nav */
 #sp_nav {
     position: absolute;
-    left: 590px;
+    left: 640px;
     z-index: 8;
     display: flex;
     background-color: #38A8E4;
@@ -184,7 +188,7 @@ width: 200px;
 }
 
 
-/* Nav: el imput de buscar */
+/* Nav: el input de buscar */
 #sp_busqueda {
     height: 5px;
     width: 100px;

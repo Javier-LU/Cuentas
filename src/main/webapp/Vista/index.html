@@ -10,10 +10,14 @@
   <link rel="stylesheet" href="CSS/body_warning.css">
   <link rel="stylesheet" href="CSS/Index.css">
   <link rel="stylesheet" href="CSS/index_main_header.css">
-  <link rel="stylesheet" href="CSS/index_main_nav.css">
-  <link rel="stylesheet" href="CSS/index_main_records.css">
+
   <link rel="stylesheet" href="CSS/index.css">
   <link rel="stylesheet" href="CSS/index_main_date_search.css">
+  <link rel="stylesheet" href="CSS/index_main_nav.css">
+  <link rel="stylesheet" href="CSS/index_main_records_header.css">
+  <link rel="stylesheet" href="CSS/index_main_records.css">
+  <link rel="stylesheet" href="CSS/index_records_dinamic.css">
+
 
   <title>Index</title>
 </head>
@@ -23,36 +27,28 @@
     <nav>
       <ul>
         <li id="cuenta">
-          <a href="index.html">
-            <img src="Photos/Iconos aplicacion/Blancos/BCuentas.png" alt="Cuentas">
-            Cuenta
-          </a>
+          <a href="index.html"><img src="Photos/Iconos_aplicacion/Blancos/BCuentas.png" alt="Cuentas">Cuenta</a>
         </li>
         <li id="ahorro">
-          <a href="ahorro.html">
-            <img src="Photos/Iconos aplicacion/Blancos/BAhorro.png" alt="Ahorros">
-            Ahorro
-          </a>
+          <a href="ahorro.html"><img src="Photos/Iconos_aplicacion/Blancos/BAhorro.png" alt="Ahorros">Ahorro</a>
         </li>
         <li id="resumenes">
-          <a href="resumenes.html">
-            <img src="Photos/Iconos aplicacion/Blancos/Resumenes.png" alt="Resumenes">
-            Resúmenes
-          </a>
+          <a href="resumenes.html"><img src="Photos/Iconos_aplicacion/Blancos/Resumenes.png"
+              alt="Resumenes">Resúmenes</a>
         </li>
       </ul>
 
       <ul id="Cabecera_derecha">
         <li id="Cabecera_derecha_li">
           <a href="configuracion.html">
-            <img src="Photos/Iconos aplicacion/Blancos/BConfiguracion.png" alt="Configuración">
+            <img src="Photos/Iconos_aplicacion/Blancos/BConfiguracion.png" alt="Configuración">
           </a>
         </li>
 
         <li id="CD_boton">
           <button id="boton_usuarios">
-            <img src="Photos/Iconos aplicacion/Blancos/Usuario.png" alt="Icono de usuario">
-            <h2>Usuario</h2>
+            <img src="Photos/Iconos_aplicacion/Blancos/Usuario.png" alt="Icono de usuario">
+            Usuario
           </button>
 
           <div id="boton_usuarios_desliegue">
@@ -76,10 +72,10 @@
     <section id="eliminar_usuario">
       <article>
         <div id="eliminar_usuario_div_1">
-          <h2>Warning</h2>
+          <p>Warning</p>
         </div>
         <div id="eliminar_usuario_div_2">
-          <h2>¿Estas seguro de eliminar el usuario actual?</h2>
+          <p>¿Estas seguro de eliminar el usuario actual?</p>
           <p>Esta acción no se puede deshacer una vez confirmada. Todos los registros relacionados con esta cuenta se
             eliminarán permanentemente.</p>
         </div>
@@ -102,8 +98,6 @@
     <!-- Header -->
     <header id="header_main">
 
-
-      </div>
 
       <!-- Ahorrado/Gastado -->
       <div class="header_div">
@@ -156,32 +150,32 @@
             <p id="Texto_sp_vacio2">Registros desde:</p>
             <p id="Texto_rango_Fecha2">Vacio</p>
           </div>
-          <form>
-            <input type="checkbox" id="valor-booleano" name="valor-booleano" value="1">
-            <label for="valor-booleano">¿Nuevos?</label>
-          </form>
+          <div id="sp_vacio3">
+            <input type="checkbox" id="checkbox-nuevos">
+            <label for="checkbox-nuevos">¿Nuevos?</label>
+          </div>
         </div>
         <nav id="sp_nav">
           <form>
 
             <input type="text" id="sp_busqueda" name="nombre">
             <button id="sp_boton_busqueda" class="sp_boton" type="submit"><img
-                src="Photos/Iconos aplicacion/Blancos/Nav_little/Lupa.png" alt="Lupa"></button>
+                src="Photos/Iconos_aplicacion/Blancos/Nav_little/Lupa.png" alt="Lupa"></button>
           </form>
           <button id="nav_boton_rango_fechas" class="sp_boton"><img
-              src="Photos/Iconos aplicacion/Blancos/Nav_little/RangoFecha.png" alt="Rango de fechas"></button>
-          <button class="sp_boton"><img src="Photos/Iconos aplicacion/Blancos/Nav_little/Exportar.png"
+              src="Photos/Iconos_aplicacion/Blancos/Nav_little/RangoFecha.png" alt="Rango de fechas"></button>
+          <button class="sp_boton"><img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Exportar.png"
               alt="Exportar"></button>
-          <button class="sp_boton"><img src="Photos/Iconos aplicacion/Blancos/Nav_little/Importar.png"
+          <button class="sp_boton"><img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Importar.png"
               alt="Importar"></button>
-          <button class="sp_boton"><img src="Photos/Iconos aplicacion/Blancos/Nav_little/Actualizar.png"
+          <button class="sp_boton"><img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Actualizar.png"
               alt="Refrescar"></button>
-          <button id="naz_boton_add" class="sp_boton"><img src="Photos/Iconos aplicacion/Blancos/Nav_little/bSuma2.png"
+          <button id="naz_boton_add" class="sp_boton"><img src="Photos/Iconos_aplicacion/Blancos/Nav_little/bSuma2.png"
               alt="Añadir"></button>
-          <button id="sp_basura" class="sp_boton"><img src="Photos/Iconos aplicacion/Blancos/Nav_little/Basuras.png"
+          <button id="sp_basura" class="sp_boton"><img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png"
               alt="basura"></button>
 
-          </div>
+
         </nav>
       </article>
 
@@ -216,51 +210,41 @@
           <nav id="r_nav">
 
             <div id="div_fecha" class="r_nav_div">
-              <img id="up_Fecha" class="r_nav_imagen" src="Photos/Iconos aplicacion/Arriba2.png" alt="arriba">
-              <img id="down_Fecha" class="r_nav_imagen" src="Photos/Iconos aplicacion/Abajo2.png" alt="abajo">
+              <img id="up_Fecha" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Arriba2.png" alt="arriba">
+              <img id="down_Fecha" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Abajo2.png" alt="abajo">
               <button id="button_fecha" class="r_nav_button">Fecha</button>
             </div>
-
-
-
             <div id="div_concepto" class="r_nav_div">
-              <img id="up_Concepto" class="r_nav_imagen" src="Photos/Iconos aplicacion/Arriba2.png" alt="arriba">
-              <img id="down_Concepto" class="r_nav_imagen" src="Photos/Iconos aplicacion/Abajo2.png" alt="abajo">
+              <img id="up_Concepto" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Arriba2.png" alt="arriba">
+              <img id="down_Concepto" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Abajo2.png" alt="abajo">
               <button id="button_concepto" class="r_nav_button">Concepto</button>
             </div>
-
             <div id="div_importe" class="r_nav_div">
-              <img id="up_Importe" class="r_nav_imagen" src="Photos/Iconos aplicacion/Arriba2.png" alt="arriba">
-              <img id="down_Importe" class="r_nav_imagen" src="Photos/Iconos aplicacion/Abajo2.png" alt="abajo">
+              <img id="up_Importe" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Arriba2.png" alt="arriba">
+              <img id="down_Importe" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Abajo2.png" alt="abajo">
               <button id="button_importe" class="r_nav_button">Importe</button>
             </div>
-
             <div id="div_saldo" class="r_nav_div">
-              <img id="up_Saldo" class="r_nav_imagen" src="Photos/Iconos aplicacion/Arriba2.png" alt="arriba">
-              <img id="down_Saldo" class="r_nav_imagen" src="Photos/Iconos aplicacion/Abajo2.png" alt="abajo">
+              <img id="up_Saldo" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Arriba2.png" alt="arriba">
+              <img id="down_Saldo" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Abajo2.png" alt="abajo">
               <button id="button_saldo" class="r_nav_button">Saldo</button>
             </div>
-
-
             <button id="r_nav_iconos" class="r_nav_button">Iconos</button>
-
             <div id="div_categoria" class="r_nav_div">
-              <img id="up_Categoria" class="r_nav_imagen" src="Photos/Iconos aplicacion/Arriba2.png" alt="arriba">
-              <img id="down_Categoria" class="r_nav_imagen" src="Photos/Iconos aplicacion/Abajo2.png" alt="abajo">
+              <img id="up_Categoria" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Arriba2.png" alt="arriba">
+              <img id="down_Categoria" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Abajo2.png" alt="abajo">
               <button id="button_Categoria" class="r_nav_button">Categoria</button>
             </div>
-
-
             <button id="r_nav_subcategoria" class="r_nav_button">Subcategoria</button>
-
             <div id="div_anotaciones" class="r_nav_div">
-              <img id="up_Anotaciones" class="r_nav_imagen" src="Photos/Iconos aplicacion/Arriba2.png" alt="arriba">
-              <img id="down_Anotaciones" class="r_nav_imagen" src="Photos/Iconos aplicacion/Abajo2.png" alt="abajo">
+              <img id="up_Anotaciones" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Arriba2.png" alt="arriba">
+              <img id="down_Anotaciones" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Abajo2.png" alt="abajo">
               <button id="button_Anotaciones" class="r_nav_button">Anotaciones</button>
             </div>
             <div id="div_tipo" class="r_nav_div">
-              <img id="up_gasto" class="r_nav_imagen" src="Photos/Iconos aplicacion/Circulo2.png" alt="arriba">
+              <img id="up_gasto" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Circulo2.png" alt="arriba">
               <button id="button_gasto" class="r_nav_button">Tipo de gasto</button>
+            </div>
           </nav>
 
           <div id="r_linea">
@@ -272,67 +256,136 @@
         <!-- fffffffffffffffffffffffffffffffffffffffffffffffff -->
 
         <div id="contenedor">
-          <!-- fffffffffffffffffffffffffffffffffffffffffffffffff -->
           <div id="contenedor_fondo_registro_id" class="contenedor_fondo_registro">
             <!-- fffffffffffffffffffffffffffffffffffffffffffffffff -->
             <div class="contenedor_registro">
-              <form>
-                <input type="date" id="cr_fecha" class="cr_imput" required>
-              </form>
-              <form>
-                <input type="text" id="cr_concepto" class="cr_imput" required>
-              </form>
-              <form>
-                <input type="number" id="cr_importe" class="cr_imput" required>
-              </form>
-              <form>
-                <input type="number" id="cr_saldo" class="cr_imput" required>
-              </form>
-              <div id="contenedor_registro_imagenes">
-                <img src="Photos/Iconos aplicacion/Categorias/DV.png" alt="Categoría">
-                <img src="Photos/Iconos aplicacion/Categorias/GF.png" alt="Subcategoría">
+              <form id="form_add_records" action="/" method="POST">
+                <input type="date" id="cr_fecha" class="input registro_fecha" name="date">
+                <input type="text" id="cr_concepto" class="input registro_concepto" name="concepto">
+                <input type="number" id="cr_importe" class="input registro_importe" name="importe">
+                <input type="number" id="cr_saldo" class="input registro_saldo" name="saldo">
 
-              </div>
-              <form>
-                <select id="cr_categoria" class="cr_imput" name="cr_categoria" required>
-                  <option value="Debito">Elige una categoria</option>
-                </select>
-              </form>
-              <form>
-                <select id="cr_subcategoria" class="cr_imput" name="cr_subcategoria" required>
-                  <option value="">Falta la categoiria</option>
-                </select>
-              </form>
-              <form>
-                <textarea id="cr_anotaciones" class="cr_imput" name="Anotaciones"></textarea>
-              </form>
-
-
-              <div class="tarjeta">
-
-                <!-- <div class="contenedor_tipo_tarjeta">
-                  <select id="cr_devito" class="cr_imput" name="cr_devito">
-                    <option value="credito">Debito333</option>
-                    <option value="devito">Credito44</option>
-                  </select>
-                </div> -->
-
-
-                <div id="contenedor_tipo_tarjeta_tarjeta" class="contenedor_tipo_tarjeta">
-                  <select id="cr_credito" class="cr_imput" name="cr_credito">
-                    <option value="credito">Debito</option>
-                    <option value="devito">Credito</option>
-                  </select>
-                  <input type="date" id="cr_fecha_tarjeta" class="cr_imput" required>
-                  <select id="cr_tipo_tarjeta" class="cr_imput" name="cr_credito">
-                    <option value="tarjeta">Debito</option>
-                  </select>
+                <div class="registro_imagenes">
+                  <img src="Photos/Iconos_aplicacion/Categorias/DV.png" alt="Categoría">
+                  <img src="Photos/Iconos_aplicacion/Categorias/GF.png" alt="Subcategoría">
                 </div>
 
-              </div>
+                <select id="cr_categoria" class="input registro_categoria" name="categoria">
+                  <option value="categoria">Elige una categoría</option>
+                  <option value="categoria2">segunda opcion</option>
+                </select>
+                <select id="cr_subcategoria" class="input registro_subcategoria" name="subcategoria">
+                  <option value="subcategoria">Falta categoría</option>
+                  <option value="asdasd">Fal23232</option>
+
+                </select>
+                <textarea id="cr_anotaciones" class="input registro_anotaciones" name="Anotaciones"></textarea>
+
+
+
+                <div class="contenedor_tipo_tarjeta2">
+
+                  <div class="contenedor_Tarjeta1">
+
+
+                    <select id="cr_credito" class="input registro_tar" name="credito">
+                      <option value="credito.">Debito</option>
+                      <option value="creditoTotal.">C.Total. Credito de gasto acumulado</option>
+                      <option value="devito">C.General. Credito de gasto pendiente.</option>
+                    </select>
+                    <input type="date" id="cr_fecha_tarjeta" class="input registro_tarjeta_fecha" name="fecha_tarjeta">
+                  </div>
+                  <div>
+                    <select id="cr_tipo_tarjeta" class="input registro_tarjeta_tipo" name="tipo_tarjeta">
+                      <option value="tarjeta">Seleciona tarjeta</option>
+                    </select>
+                  </div>
+
+                </div>
+
+
+                <input id="boton_registro_añadir" type="submit" value="+">
+              </form>
+
             </div>
           </div>
+
+          <!-- ------------------------------------------------------------------------------------  -->
+          <!-- ************************************************************************************  -->
+          <!-- ------------------------------------------------------------------------------------  -->
+          <div id="contenedor_registros_dinamicos">
+
+            <div class="contenedor_fondo_registro">
+              <div class="contenedor_registro">
+                <input type="date" id="registro_1" class="input registro_fecha" name="date">
+
+                <input type="text" id="registro_2" class="input registro_concepto" name="concepto">
+                <input type="number" id="registro_3" class="input registro_importe" name="importe">
+                <input type="number" id="registro_4" class="input registro_saldo" name="saldo">
+
+                <div class="registro_imagenes">
+                  <img src="Photos/Iconos_aplicacion/Categorias/DV.png" alt="Categoría">
+                  <img src="Photos/Iconos_aplicacion/Categorias/GF.png" alt="Subcategoría">
+                </div>
+
+                <select id="registro_5" class="input registro_categoria" name="categoria">
+                  <option value="categoria">Elige una categoría</option>
+                  <option value="categoria2">segunda opcion</option>
+                </select>
+                <select id="registro_6" class="input registro_subcategoria" name="subcategoria">
+                  <option value="subcategoria">Falta categoría</option>
+                  <option value="asdasd">Fal23232</option>
+
+                </select>
+                <textarea id="registro_7" class="input registro_anotaciones" name="Anotaciones"></textarea>
+
+
+                <div class="contenedor_tipo_tarjeta2">
+
+                  <div class="contenedor_Tarjeta1">
+
+
+                    <select id="registro_8" class="input registro_tar" name="credito">
+                      <option value="credito.">Debito</option>
+                      <option value="creditoTotal.">C.Total. Credito de gasto acumulado</option>
+                      <option value="devito">C.General. Credito de gasto pendiente.</option>
+                    </select>
+                    <input type="date" id="registro_9" class="input registro_tarjeta_fecha" name="fecha_tarjeta">
+                  </div>
+                  <div>
+                    <select id="registro_10" class="input registro_tarjeta_tipo" name="tipo_tarjeta">
+                      <option value="tarjeta">Seleciona tarjeta</option>
+                    </select>
+                  </div>
+
+                </div>
+
+
+
+              </div>
+              <div class="botones_main">
+                <button class="buttons_up"> <img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png"
+                    alt="Subcategoría"></button>
+                <button class="buttons_down"> <img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png"
+                    alt="Subcategoría"></button>
+              </div>
+            </div>
+
+
+
+
+          </div>
+
+
+
+
+
+          <!-- Fin del contenedor de registros -->
         </div>
+
+
+
+
       </article>
 
     </section>
@@ -394,6 +447,7 @@
   <script src="../JS/index_nav_records.js"></script>
   <script src="../JS/index_date_range.js"></script>
   <script src="../JS/index_add.js"></script>
+
 
 
 </body>

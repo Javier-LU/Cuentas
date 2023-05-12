@@ -1,0 +1,165 @@
+
+/* Estilo de los input */
+.input {
+    box-sizing: border-box;
+    height: 40px;
+    width: 100px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border: 2px dashed #646464;
+    padding-left: 10px;
+    transition: background-color 1s linear;
+    font-size: 12px;
+}
+
+#contenedor_registros_dinamicos{
+    transform: translate(0, -80px);
+}
+
+
+/* Estilo de los Iconos */
+.registro_imagenes {
+    display: flex;
+}
+.registro_imagenes img {
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* nav categorías */
+.registro_fecha{
+border-radius: 20px 0 0 20px;
+width: 112px;
+margin-left: 0px;
+padding-left: 0px;
+}
+
+.registro_concepto{
+    width: 140px;
+}
+
+.registro_importe{
+    width: 90px;
+}
+
+
+.registro_saldo{
+    width: 90px;
+}
+
+.registro_categoria{
+    width: 124px;   
+    padding: 5px;
+    font-size: 12px;
+}
+
+.registro_subcategoria{
+    background-color: gray;
+    color: white;
+    width: 124px;    
+    padding: 5px;
+    font-size: 12px;
+    pointer-Events: none;
+}
+
+.registro_anotaciones{
+    width: 130px;
+    margin-top: 4px;
+}
+
+
+.tarjeta {
+    position: relative;
+    margin-top: 4px;
+}
+
+/* Tipo de gasto */
+.contenedor_tipo_tarjeta2 {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor_Tarjeta1{
+    display: flex;
+    
+}
+
+.registro_tarjeta_fecha{   
+    height: 20px;
+    width: 80px;    
+}
+
+.registro_tar{    
+    height: 20px;
+    width: 70px;     
+}
+
+
+.registro_tarjeta_tipo{   
+    height: 20px;
+    width: 150px;
+}
+
+
+/* Botones*/
+
+
+
+.botones_main{
+    position: absolute;
+    top: 15px;
+    left: 1160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.botones_main img{
+    width: 0px;
+    height: 0px;
+}
+
+/* .botones_main img:hover{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 200px;
+} */
+
+   .buttons_up{
+    
+    width:15px;
+    height: 20px;
+    border: none;
+    border-radius: 0 13px 0px 0;
+    background-color: #0cc2f9;
+    color: white;
+    font-size: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, width 0.3s, height 0.3s, font-size 0.3s;
+    
+   }
+.buttons_down{
+    
+    width:15px;
+    height: 20px;
+    border: none;
+    border-radius: 0 0px 13px 0;
+    background-color: #0cc2f9;
+    color: white;
+    font-size: 0px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s, width 0.3s, height 0.3s, font-size 0.3s;
+    
+}
+
+.buttons_up:hover, 
+.buttons_down:hover {
+  background-color: #1b4f82;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 45px;
+  height: 20px;
+  font-size: 25px;
+}
+
