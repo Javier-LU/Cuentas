@@ -26,7 +26,7 @@
   <header id="Cabecera">
     <nav>
       <ul>
-        <li id="cuenta">
+        <li id="cuentas">
           <a href="index.html"><img src="Photos/Iconos_aplicacion/Blancos/BCuentas.png" alt="Cuentas">Cuenta</a>
         </li>
         <li id="ahorro">
@@ -259,7 +259,7 @@
           <div id="contenedor_fondo_registro_id" class="contenedor_fondo_registro">
             <!-- fffffffffffffffffffffffffffffffffffffffffffffffff -->
             <div class="contenedor_registro">
-              <form id="form_add_records" action="/" method="POST">
+              <form id="form_add_records" action="../gestionGastos" method="POST" target="_self">
                 <input type="date" id="cr_fecha" class="input registro_fecha" name="date">
                 <input type="text" id="cr_concepto" class="input registro_concepto" name="concepto">
                 <input type="number" id="cr_importe" class="input registro_importe" name="importe">
@@ -271,15 +271,15 @@
                 </div>
 
                 <select id="cr_categoria" class="input registro_categoria" name="categoria">
-                  <option value="categoria">Elige una categoría</option>
-                  <option value="categoria2">segunda opcion</option>
+                  <option value="1">Elige una categoría</option>
+                  <option value="2">segunda opcion</option>
                 </select>
                 <select id="cr_subcategoria" class="input registro_subcategoria" name="subcategoria">
-                  <option value="subcategoria">Falta categoría</option>
-                  <option value="asdasd">Fal23232</option>
+                  <option value="1">Falta categoría</option>
+                  <option value="2">Fal23232</option>
 
                 </select>
-                <textarea id="cr_anotaciones" class="input registro_anotaciones" name="Anotaciones"></textarea>
+                <textarea id="cr_anotaciones" class="input registro_anotaciones" name="anotaciones"></textarea>
 
 
 
@@ -288,16 +288,16 @@
                   <div class="contenedor_Tarjeta1">
 
 
-                    <select id="cr_credito" class="input registro_tar" name="credito">
-                      <option value="credito.">Debito</option>
-                      <option value="creditoTotal.">C.Total. Credito de gasto acumulado</option>
-                      <option value="devito">C.General. Credito de gasto pendiente.</option>
+                    <select id="cr_credito" class="input registro_tar" name="credito_Debito">
+                      <option value="1">Debito</option>
+                      <option value="2">C.Total. Credito de gasto acumulado</option>
+                      <option value="3">C.General. Credito de gasto pendiente.</option>
                     </select>
                     <input type="date" id="cr_fecha_tarjeta" class="input registro_tarjeta_fecha" name="fecha_tarjeta">
                   </div>
                   <div>
                     <select id="cr_tipo_tarjeta" class="input registro_tarjeta_tipo" name="tipo_tarjeta">
-                      <option value="tarjeta">Seleciona tarjeta</option>
+                      <option value="1">Seleciona tarjeta</option>
                     </select>
                   </div>
 
@@ -329,12 +329,12 @@
                 </div>
 
                 <select id="registro_5" class="input registro_categoria" name="categoria">
-                  <option value="categoria">Elige una categoría</option>
-                  <option value="categoria2">segunda opcion</option>
+                  <option value="1">Elige una categoría</option>
+                  <option value="2">segunda opcion</option>
                 </select>
                 <select id="registro_6" class="input registro_subcategoria" name="subcategoria">
-                  <option value="subcategoria">Falta categoría</option>
-                  <option value="asdasd">Fal23232</option>
+                  <option value="1">Falta categoría</option>
+                  <option value="2">Fal23232</option>
 
                 </select>
                 <textarea id="registro_7" class="input registro_anotaciones" name="Anotaciones"></textarea>
@@ -346,15 +346,15 @@
 
 
                     <select id="registro_8" class="input registro_tar" name="credito">
-                      <option value="credito.">Debito</option>
-                      <option value="creditoTotal.">C.Total. Credito de gasto acumulado</option>
-                      <option value="devito">C.General. Credito de gasto pendiente.</option>
+                      <option value="1">Debito</option>
+                      <option value="2">C.Total. Credito de gasto acumulado</option>
+                      <option value="3">C.General. Credito de gasto pendiente.</option>
                     </select>
                     <input type="date" id="registro_9" class="input registro_tarjeta_fecha" name="fecha_tarjeta">
                   </div>
                   <div>
                     <select id="registro_10" class="input registro_tarjeta_tipo" name="tipo_tarjeta">
-                      <option value="tarjeta">Seleciona tarjeta</option>
+                      <option value="1">Seleciona tarjeta</option>
                     </select>
                   </div>
 
@@ -441,13 +441,15 @@
 
 
 
-  <script src="../JS/body_header_right.js"></script>
-  <script src="../JS/Body_warning.js"></script>
-  <script src="../JS/body_window_onload.js"></script>
-  <script src="../JS/index_nav_records.js"></script>
-  <script src="../JS/index_date_range.js"></script>
-  <script src="../JS/index_add.js"></script>
+  <script src="JS/body_header_right.js"></script>
+  <script src="JS/Body_warning.js"></script>
+  <script src="JS/body_window_onload.js"></script>
+  <script src="JS/index_nav_records.js"></script>
+  <script src="JS/index_date_range.js"></script>
+  <!-- <script src="JS/index_add.js"></script> -->
 
+
+  </script>
 
 
 </body>

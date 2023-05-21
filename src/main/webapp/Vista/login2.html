@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cargar imagen</title>
+
+</head>
+<body>
+  <script>
+  function llamar(url) {
+	  fetch(url)
+	    .then(res => res.json())
+	    .then(res => {
+	      console.log("Hola estamos");
+	      console.log(res);
+	      pintar(res);
+	    })
+	    .catch(error => {
+	    	
+	      console.log(error);
+	 
+	      console.log("Hola");
+	    });
+	}
+  
+	function pintar(datos) {
+	  let htm = "<table>";
+	  for (i = 0; i < datos.length; i++) {
+	    htm += "<tr><td>" + datos[i].img + "</td></tr>";
+	    htm += "<tr><td>" + "hola" + "</td></tr>";
+	  }
+	  htm += "</table>";
+	  document.getElementById("resultados").innerHTML = htm;
+	  console.log(datos);
+	}
+
+	window.onload = function() {
+	  llamar("../prueba");
+	  console.log("Hola, esto es un mensaje en la consola");
+	}
+
+  </script>
+
+<h1>cosas</h1>
+<a href="../prueba">ejecutar</a>
+<div id="resultados"></div>
+</body>
+</html>

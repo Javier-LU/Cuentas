@@ -74,9 +74,7 @@ body_header_right defino los estilos de los botones e imagenes de la derecha. */
     border-radius: 10px 10px 0 0;
     font-size: 30px;
 }
-#boton_usuarios{
-    font-size: 30px;
-}
+
 
 /* Pasa al 100% cuando el raton esta encima */
 #Cabecera nav #Cabecera_derecha #CD_boton:hover {

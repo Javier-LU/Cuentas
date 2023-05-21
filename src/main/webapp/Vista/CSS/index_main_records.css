@@ -39,8 +39,8 @@ franja que esta al fondo para orientar al usuario */
     justify-content: center;
 }
 #contenedor_fondo_registro_id{
-    transform: translate(0, -200%);
-    pointer-Events: none;  
+    transform: translate(0, 400%);
+    /* pointer-Events: none;   */
     
 }
 .contenedor_fondo_registro:hover {

@@ -5,8 +5,7 @@ body_header_right defino los estilos de los botones e imagenes de la derecha. */
 #Cabecera {
   background: linear-gradient(to bottom right, #236BAF, #0cc2f9);
   color: white;
-  padding-left: 18px;
-  border-radius: 0 0 50px 50px;
+  padding-left: 18px;  
   margin-top: -10px; /* He tenido un pequeño problema con el header que me generaba un espacio entre el inicio de la web y el nav. */
   padding-left: 18px;
   border-bottom: 10px solid rgba(0, 0, 0, 0.2);
