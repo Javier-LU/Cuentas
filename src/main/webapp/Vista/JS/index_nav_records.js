@@ -1,3 +1,8 @@
+//-----------Obsoleto
+// Función que oculta o muestra los botones del titulo de la "tabla" de los gastos y repinta la web en relación a un orden determinado 
+// dependiendo del botón. Este mismo codigo, sin los enviós, esta programado en index_nav_records. Lo hice al comienzo del proyecto.
+
+
 var fecha_up = document.getElementById('up_Fecha');
 var Concepto_up = document.getElementById('up_Concepto');
 var Importe_up = document.getElementById('up_Importe');

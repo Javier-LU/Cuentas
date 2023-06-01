@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.google.gson.Gson;
-
+import com.google.gson.JsonObject;
 import dao.DaoUsuarios;
 
 import java.io.PrintWriter;
@@ -23,14 +23,14 @@ import java.sql.SQLException;
 /**
  * Servlet implementation class prueba
  */
-@WebServlet("/prueba")
-public class prueba extends HttpServlet {
+@WebServlet("/gestionImagenUsuario")
+public class GestionImagenUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     /**
      * Default constructor. 
      */
-    public prueba() {
+    public GestionImagenUsuario() {
         // TODO Auto-generated constructor stub
     }
 
@@ -44,11 +44,31 @@ public class prueba extends HttpServlet {
 		try {
 			DaoUsuarios c = new DaoUsuarios();
 			String respuestaC;
+			String usuarios;
 			respuestaC = c.damejson();
-			System.out.println(respuestaC);
+			usuarios = c.damejsonUsuarios();
+			//System.out.println(respuestaC);
+			//System.out.println(usuarios);
+			
+			
+			    //out.println(respuestaC);
+			    //out.close();
+			Gson gson = new Gson();
+
+			// Crear un JsonObject y agregar propiedades
+			JsonObject respuesta = new JsonObject();
+			respuesta.addProperty("respuestaC", respuestaC);
+			respuesta.addProperty("usuarios", usuarios);
+			
+			String respuestaJSON = gson.toJson(respuesta);
+			
 			PrintWriter out = response.getWriter();
-			    out.println(respuestaC);
-			    out.close();
+			out.println(respuestaJSON);
+			 
+			 System.out.println(respuestaJSON);
+			 
+			 out.close();
+
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

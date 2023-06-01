@@ -15,22 +15,22 @@ window.onload = function() {
         fechaPasada.setDate(1);
        
         document.getElementById("Texto_rango_Fecha2").textContent = `${fechaActual.toLocaleDateString()} - ${fechaPasada.toLocaleDateString()}`;
-        cuenta.style.opacity = "100%";
+        cuenta.style.opacity = "1";
         cuenta.style.backgroundColor = "#0cc2f9";
         cuenta.style.borderRadius = "10px 10px 0 0";
         cuenta.style.cursor = "none";
     } else if (document.title == "ahorro") {
-        ahorro.style.opacity = "100%";
+        ahorro.style.opacity = "1";
         ahorro.style.backgroundColor = "#0cc2f9";
         ahorro.style.borderRadius = "10px 10px 0 0";
         ahorro.style.cursor = "none";
     } else if (document.title == "resumenes") {
-        resumenes.style.opacity = "100%";
+        resumenes.style.opacity = "1";
         resumenes.style.backgroundColor = "#0cc2f9";
         resumenes.style.borderRadius = "10px 10px 0 0";
         resumenes.style.cursor = "none";
     } else {
-        configuracion.style.opacity = "100%";
+        configuracion.style.opacity = "1";
         configuracion.style.backgroundColor = "#0cc2f9";
         configuracion.style.borderRadius = "10px 10px 0 0";
         configuracion.style.cursor = "none";

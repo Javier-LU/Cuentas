@@ -1,4 +1,7 @@
 
+
+// Función para gestionar el divs de eliminar el usuario
+
 var elimar = document.getElementById('eliminar_usuario');
 var botonElimar = document.getElementById('eliminar_aceptar');
 

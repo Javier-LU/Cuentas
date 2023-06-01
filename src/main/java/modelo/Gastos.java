@@ -1,12 +1,16 @@
 
 package modelo;
 import dao.DaoGastos;
+import dao.DaoUsuarios;
 
 import java.sql.SQLException;
 
 
 import java.util.Date;
 //import java.sql.Date;
+
+
+
 
 /**
  * Clase que representa un gasto
@@ -32,19 +36,74 @@ import java.util.Date;
 
 public class Gastos {
 
-	private Date fecha;
-	private String concepto;
-	private int importe;
-	private int saldo;
+								private Date fecha;
+								private String concepto;
+								private int importe;
+								private int saldo;
 	private int categoria;
 	private int subcategoria;
-	private String anotaciones;
+								private String anotaciones;
 	private int creditoDebito;	
-	private Date fechaTarjeta;
-	private int tipoTarjeta;	
+								private Date fechaTarjeta;
+								private int tipoTarjeta;
 	
-	
-	 /**
+									private int ID;
+									private String imagen_categoria;
+									private String imagen_subcategoria;
+									private String nombre_categoria;
+									private String nombre_subcategoria;
+									private String nombre_tarjeta;
+									
+									private String fechaString;
+									private String fechaTarjetaString;
+									
+									private String color;
+									
+									private int IdSub;
+									private int IdCatSub;
+								
+									
+									
+									
+									
+									    private static Date fecha1;
+									    private static Date fecha2;
+									    private static String key;
+
+									    public Date getFecha1() {
+									        return fecha1;
+									    }
+
+									    public void setFecha1(Date fecha1) {
+									        Gastos.fecha1 = fecha1;
+									    }
+
+									    public Date getFecha2() {
+									        return fecha2;
+									    }
+
+									    public void setFecha2(Date fecha2) {
+									        Gastos.fecha2 = fecha2;
+									    }
+
+									    public String getKey() {
+									        return key;
+									    }
+
+									    public void setKey(String key) {
+									        Gastos.key = key;
+									    }
+									
+
+
+
+
+
+
+
+
+
+	/**
      * Constructor predeterminado de la clase gastos.
      * 
      */
@@ -52,7 +111,47 @@ public class Gastos {
 		
 	}
 	
-    /**
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    public Gastos(String fechaString, String concepto, int importe, int saldo, String anotaciones, String fechaTarjetaString,
+			int tipoTarjeta, int iD, String imagen_categoria, String imagen_subcategoria, String nombre_categoria,
+			String nombre_subcategoria, String nombre_tarjeta, String color, int IdSub, int IdCatSub) {
+		
+		this.fechaString = fechaString;
+		this.concepto = concepto;
+		this.importe = importe;
+		this.saldo = saldo;
+		this.anotaciones = anotaciones;
+		this.fechaTarjetaString = fechaTarjetaString;
+		this.tipoTarjeta = tipoTarjeta;
+		this.ID = iD;
+		this.imagen_categoria = imagen_categoria;
+		this.imagen_subcategoria = imagen_subcategoria;
+		this.nombre_categoria = nombre_categoria;
+		this.nombre_subcategoria = nombre_subcategoria;
+		this.nombre_tarjeta = nombre_tarjeta;
+		this.color = color;
+		this.IdSub = IdSub;
+		this.IdCatSub = IdCatSub;
+	}
+
+
+
+
+
+
+
+
+
+
+	/**
      * Constructor de la clase gastos con todos los parámetros.
      *
      * @param fecha         La fecha del gasto.
@@ -260,20 +359,115 @@ public class Gastos {
 	public void setTipoTarjeta(int tipoTarjeta) {
 		this.tipoTarjeta = tipoTarjeta;
 	}	
+	
+		
 
 	
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public String getImagen_categoria() {
+		return imagen_categoria;
+	}
+
+	public void setImagen_categoria(String imagen_categoria) {
+		this.imagen_categoria = imagen_categoria;
+	}
+
+	public String getImagen_subcategoria() {
+		return imagen_subcategoria;
+	}
+
+	public void setImagen_subcategoria(String imagen_subcategoria) {
+		this.imagen_subcategoria = imagen_subcategoria;
+	}
+
+	public String getNombre_categoria() {
+		return nombre_categoria;
+	}
+
+	public void setNombre_categoria(String nombre_categoria) {
+		this.nombre_categoria = nombre_categoria;
+	}
+
+	public String getNombre_subcategoria() {
+		return nombre_subcategoria;
+	}
+
+	public void setNombre_subcategoria(String nombre_subcategoria) {
+		this.nombre_subcategoria = nombre_subcategoria;
+	}
+
+	public String getNombre_tarjeta() {
+		return nombre_tarjeta;
+	}
+
+	public void setNombre_tarjeta(String nombre_tarjeta) {
+		this.nombre_tarjeta = nombre_tarjeta;
+	}
+		
+
+	public String getFechaString() {
+		return fechaString;
+	}
+
+	public void setFechaString(String fechaString) {
+		this.fechaString = fechaString;
+	}
+
+
+	public String getFechaTarjetaString() {
+		return fechaTarjetaString;
+	}
+
+
+	public void setFechaTarjetaString(String fechaTarjetaString) {
+		this.fechaTarjetaString = fechaTarjetaString;
+	}
+
+
+	public String getColor() {
+		return color;
+	}
+
+	
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+
+
+
+
+
+
+
+
+
 	/**
 	 * Inserta el objeto actual en la base de datos utilizando el DaoGastos correspondiente.
 	 *
 	 * @throws SQLException si ocurre un error al interactuar con la base de datos.
 	 */
-	public void insertar () throws SQLException {
-		
-		
+	public void insertar () throws SQLException {		
 		
 		DaoGastos dao = new DaoGastos();
 		dao.insertGastos(this);
 	}
+	
+	public void update () throws SQLException {		
+		
+		DaoGastos dao = new DaoGastos();
+		dao.uptdateGastos(this);
+	}
+
+
+
 
 	/**
 	 * Devuelve una representación en forma de cadena de caracteres del objeto gastos.
@@ -282,16 +476,15 @@ public class Gastos {
 	 */
 	@Override
 	public String toString() {
-		return "gastos [fecha=" + fecha + ", concepto=" + concepto + ", importe=" + importe + ", saldo=" + saldo
+		return "Gastos [fecha=" + fecha + ", concepto=" + concepto + ", importe=" + importe + ", saldo=" + saldo
 				+ ", categoria=" + categoria + ", subcategoria=" + subcategoria + ", anotaciones=" + anotaciones
 				+ ", creditoDebito=" + creditoDebito + ", fechaTarjeta=" + fechaTarjeta + ", tipoTarjeta=" + tipoTarjeta
-				+ ", getFecha()=" + getFecha() + ", getConcepto()=" + getConcepto() + ", getImporte()=" + getImporte()
-				+ ", getSaldo()=" + getSaldo() + ", getCategoria()=" + getCategoria() + ", getSubcategoria()="
-				+ getSubcategoria() + ", getAnotaciones()=" + getAnotaciones() + ", getCreditoDebito()="
-				+ getCreditoDebito() + ", getFechaTarjeta()=" + getFechaTarjeta() + ", getTipoTarjeta()="
-				+ getTipoTarjeta() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+				+ ", ID=" + ID + ", imagen_categoria=" + imagen_categoria + ", imagen_subcategoria="
+				+ imagen_subcategoria + ", nombre_categoria=" + nombre_categoria + ", nombre_subcategoria="
+				+ nombre_subcategoria + ", nombre_tarjeta=" + nombre_tarjeta + "]";
 	}
+	
+
 
 
 

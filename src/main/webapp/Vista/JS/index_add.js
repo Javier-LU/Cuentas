@@ -1,3 +1,5 @@
+// FUnción que valida y envia el formulario para añadir un nuevo registro. 
+
 var boton_add = document.getElementById("naz_boton_add");
 var move = document.getElementById("contenedor_fondo_registro_id");
 var form_record = document.getElementById("form_add_records");

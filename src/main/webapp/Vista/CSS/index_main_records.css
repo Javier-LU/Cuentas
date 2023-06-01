@@ -24,7 +24,7 @@ los registros de la base de datos */
     border: 2px dashed grey;
     box-shadow: inset 0px 0px 20px 1px rgba(0, 0, 0, 0.8);
     /* display: flex; */
-    overflow: hidden;
+    overflow-y: scroll;
 
 }
 
@@ -39,7 +39,7 @@ franja que esta al fondo para orientar al usuario */
     justify-content: center;
 }
 #contenedor_fondo_registro_id{
-    transform: translate(0, 400%);
+    transform: translate(0,-200%);
     /* pointer-Events: none;   */
     
 }
@@ -70,6 +70,7 @@ franja que esta al fondo para orientar al usuario */
 
 .contenedor_registro:hover .input {
     border: 2px dashed #646464;
+    
 }
 
 .contenedor_registro .input:hover {
@@ -128,7 +129,9 @@ franja que esta al fondo para orientar al usuario */
 }
 
 
-
+#form_add_records{
+    width: 1100px;
+}
 
 /* Eliminar los bonotes del input number de chrome y firefox*/
 input[type="number"]::-webkit-inner-spin-button,

@@ -1,447 +1,165 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <title>Ejemplo de bocadillo redondo</title>
-  <style>
-    /* #rango_fecha_relative{
-position: relative;
-} */
-
-
-    /* #rango_fecha{
-    position: absolute;
-    left: 800px;
-    padding: 10px;
-    border-radius: 20px;
-    z-index: 40;
-    width: 150px;
-    text-align: center;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-    background-color: white;
+if (textoOption != "Elige una categoría") {
+  nuevoOption = document.createElement("option");
+  nuevoOption.value = textoValue;
+  nuevoOption.textContent = textoOption;
+  input.appendChild(nuevoOption);
+};
+for (var i = 0; i < sub.length; i++) {
+ 
+  
+    console.log("-----------bucle------------");
+    nuevoOption = document.createElement("option");
+    nuevoOption.value = sub[i].id;
+    nuevoOption.textContent = sub[i].nombre;
+    input.appendChild(nuevoOption);
+  
 }
-#rango_fecha form{
-    
-    display: flex;
-    flex-direction: column;
-    align-content: left;
-    align-items: left;
-    gap: 5px;
-    background-color: aquamarine;
-    
-} */
-    #texto_rango_Fecha222 {
+input.addEventListener('change', function () {
+  opcionSeleccionada = input.options[input.selectedIndex];
+  textoValue = opcionSeleccionada.value;
+  textoOption = opcionSeleccionada.textContent;
+});
+while (input.firstChild) {
+  input.removeChild(input.firstChild);
+}
+nuevoOption = document.createElement("option");
+nuevoOption.value = textoValue;
+nuevoOption.textContent = textoOption;
+input.appendChild(nuevoOption);
+for (var i = 0; i < sub.length; i++) {
+  if (sub[i].nombre == textoOption) {
+    hermanoHijo[0].src = sub[i].img;
+    break;
+  }
+}
 
-      background-color: aquamarine;
-      min-width: 100%;
-      max-height: 100%;
-      border-radius: 20px 20px 0 0;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+console.log(nombreInput)
+switch (nombreInput) {
+  case "categoria":
+    padre = input.parentNode;
+    hermanoPosterior = input.nextElementSibling;
+
+    while (input.firstChild) {
+      input.removeChild(input.firstChild);
     }
 
-    /* #texto_rango_Fecha222 p{
-    background-color: aquamarine;
-} */
-  </style>
-</head>
+    nuevoOption = document.createElement("option");
+    nuevoOption.value = textoValue;
+    nuevoOption.textContent = textoOption;
+    input.appendChild(nuevoOption);
 
-<body>
-  <form id="mi_formulario" action="/" method="POST">
-    <label for="fecha1">Fecha 1:</label>
-    <input type="date" id="fecha1" name="fecha1">
-
-    <label for="fecha2">Fecha 2:</label>
-    <input type="date" id="fecha2" name="fecha2">
-
-    <button type="submit">Enviar</button>
-  </form>
-  <script>
-    window.onload = function () {
-      alert("La fecha 2 no puede ser superior a la fecha 1.");
-    }
-    var miFormulario = document.getElementById("mi_formulario");
-
-    miFormulario.addEventListener("submit", function (event) {
-      var fecha1 = new Date(document.getElementById("fecha1").value);
-      var fecha2 = new Date(document.getElementById("fecha2").value);
-      var fechaActual = new Date();
-
-      if (fecha1 > fechaActual) {
-        event.preventDefault();
-        alert("La fecha 1 no puede ser superior a la fecha actual.");
-      } else if (fecha2 > fecha1) {
-        event.preventDefault();
-        alert("La fecha 2 no puede ser superior a la fecha 1.");
+    for (var i = 0; i < cat.length; i++) {
+      if (cat[i].nombre != textoOption) {
+        nuevoOption = document.createElement("option");
+        nuevoOption.value = cat[i].id;
+        nuevoOption.textContent = cat[i].nombre;
+        input.appendChild(nuevoOption);
       }
+    }
+    input.addEventListener('change', function () {
+
+
+      opcionSeleccionada = input.options[input.selectedIndex];
+      textoValue = opcionSeleccionada.value;
+      textoOption = opcionSeleccionada.textContent;
+
+
+      while (input.firstChild) {
+        input.removeChild(input.firstChild);
+      }
+
+      nuevoOption = document.createElement("option");
+      nuevoOption.value = textoValue;
+      nuevoOption.textContent = textoOption;
+      input.appendChild(nuevoOption);
+      input.style.backgroundColor = "red";
+      for (var i = 0; i < hermanoPosterior.length; i++) {
+        hermanoPosterior.options[0].remove();
+      }
+      nuevoOption = document.createElement("option");
+      nuevoOption.value = textoValue;
+      nuevoOption.textContent = "Elige una categoría";
+      hermanoPosterior.appendChild(nuevoOption);
+
+      for (var i = 0; i < cat.length; i++) {
+        if (cat[i].nombre == textoOption) {
+          hermanoHijo[0].src = cat[i].imgString;
+          padre.style.backgroundColor = cat[i].color;
+          break;
+        }
+      }
+
+
+
     });
-  </script>
-</body>
-
-</html>
 
 
 
 
 
 
-
-
-
-
-USE cuentas;
-CREATE TABLE Usuario (
-nombre VARCHAR(10) PRIMARY KEY,
-ID_imagen INT,
-contraseña VARCHAR(8),
-FOREIGN KEY (ID_imagen) REFERENCES Imagen (ID_imagen)
-);
-
-CREATE TABLE Imagen (
-ID_imagen INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-tipo VARCHAR(12),
-imagen VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE Categoria (
-ID_Categoria INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nombre VARCHAR(30),
-ID_imagen INT,
-color VARCHAR(10),
-nombre_usuario VARCHAR(10),
-FOREIGN KEY (ID_imagen) REFERENCES Imagen (ID_imagen),
-FOREIGN KEY (nombre_usuario) REFERENCES Usuario (nombre)
-);
-
-CREATE TABLE Subcategoria (
-ID_subcategoria INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nombre VARCHAR(30),
-nombre_categoria VARCHAR(30),
-ID_imagen INT,
-nombre_usuario VARCHAR(10),
-FOREIGN KEY (nombre_categoria) REFERENCES Categoria (nombre),
-FOREIGN KEY (ID_imagen) REFERENCES Imagen (ID_imagen),
-FOREIGN KEY (nombre_usuario) REFERENCES Usuario (nombre)
-);
-
-CREATE TABLE Gasto (
-ID_gasto VARCHAR(36) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-fecha DATE,
-concepto VARCHAR(50),
-importe DECIMAL(8, 2),
-saldo DECIMAL(8, 2),
-ID_imagen_categoria INT,
-ID_imagen_subcategoria INT,
-nombre_categoria INT,
-nombre_subcategoria INT,
-anotaciones VARCHAR(255),
-nuevos_registros BOOLEAN,
-nombre_tarjeta VARCHAR(20),
-mes_tarjeta INTEGER,
-nombre_usuario VARCHAR(10),
-FOREIGN KEY (ID_imagen_categoria) REFERENCES Imagen (ID_imagen),
-FOREIGN KEY (ID_imagen_subcategoria) REFERENCES Imagen (ID_imagen),
-FOREIGN KEY (nombre_categoria) REFERENCES Categoria (nombre),
-FOREIGN KEY (nombre_subcategoria) REFERENCES Subcategoria (nombre),
-FOREIGN KEY (nombre_tarjeta) REFERENCES Tarjeta (nombre),
-FOREIGN KEY (nombre_usuario) REFERENCES Usuario (nombre)
-);
-
-CREATE TABLE Restriccion (
-ID_restriccion INTEGER PRIMARY KEY,
-concepto_gasto VARCHAR(50),
-nombre_categoria VARCHAR(30),
-nombre_subcategoria VARCHAR(30),
-FOREIGN KEY (concepto_gasto) REFERENCES Gasto (concepto),
-FOREIGN KEY (nombre_categoria) REFERENCES Categoria (nombre),
-FOREIGN KEY (nombre_subcategoria) REFERENCES Subcategoria (nombre)
-);
-
-CREATE TABLE Tarjeta (
-nombre VARCHAR(20) PRIMARY KEY,
-vencimiento DATE,
-descripcion VARCHAR(255),
-limite DECIMAL(8, 2),
-nombre_usuario VARCHAR(10),
-FOREIGN KEY (nombre_usuario) REFERENCES Usuario (nombre)
-);
-
-
-
-
-
-
-
-
-
-CREATE TABLE Usuario (
-nombre VARCHAR(10) NOT NULL PRIMARY KEY,
-ID_imagen INT,
-contraseña VARCHAR(8),
-FOREIGN KEY (ID_imagen) REFERENCES Imagen (ID_imagen)
-);
-
-CREATE TABLE Imagen (
-ID_imagen INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-tipo VARCHAR(12),
-imagen VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE Categoria (
-ID_Categoria INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nombre VARCHAR(30),
-ID_imagen INT,
-color VARCHAR(10),
-nombre_usuario VARCHAR(10),
-FOREIGN KEY (ID_imagen) REFERENCES Imagen (ID_imagen),
-FOREIGN KEY (nombre_usuario) REFERENCES Usuario (nombre)
-);
-
-
-CREATE TABLE Subcategoria (
-ID_subcategoria INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nombre VARCHAR(30),
-nombre_categoria VARCHAR(30),
-ID_imagen INT,
-nombre_usuario VARCHAR(10),
-FOREIGN KEY (nombre_categoria) REFERENCES Categoria (nombre),
-FOREIGN KEY (ID_imagen) REFERENCES Imagen (ID_imagen),
-FOREIGN KEY (nombre_usuario) REFERENCES Usuario (nombre)
-);
-
-CREATE TABLE Gasto (
-ID_gasto INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-fecha DATE,
-concepto VARCHAR(50),
-importe DECIMAL(8, 2),
-saldo DECIMAL(8, 2),
-ID_imagen_categoria_principal INTEGER ,
-ID_imagen_subcategoria_secundaria INTEGER ,
-nombre_categoria VARCHAR(30),
-nombre_subcategoria VARCHAR(30),
-anotaciones VARCHAR(255),
-nuevos_registros BOOLEAN,
-nombre_tarjeta VARCHAR(20),
-mes_tarjeta INTEGER,
-nombre_usuario VARCHAR(10),
-FOREIGN KEY (ID_imagen_categoria_principal) REFERENCES Imagen (ID_imagen),
-FOREIGN KEY (ID_imagen_subcategoria_secundaria) REFERENCES Imagen (ID_imagen),
-FOREIGN KEY (nombre_categoria) REFERENCES Categoria (nombre),
-FOREIGN KEY (nombre_subcategoria) REFERENCES Subcategoria (nombre),
-FOREIGN KEY (nombre_tarjeta) REFERENCES Tarjeta (nombre),
-FOREIGN KEY (nombre_usuario) REFERENCES Usuario (nombre)
-);
-
-CREATE TABLE Restriccion (
-ID_concepto_restringido INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-concepto_gasto_id INTEGER,
-nombre_categoria VARCHAR(30),
-nombre_subcategoria VARCHAR(30),
-FOREIGN KEY (concepto_gasto_id) REFERENCES Gasto (ID_gasto),
-FOREIGN KEY (nombre_categoria) REFERENCES Categoria (nombre),
-FOREIGN KEY (nombre_subcategoria) REFERENCES Subcategoria (nombre)
-);
-
-CREATE TABLE Tarjeta (
-ID_tarjeta INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nombre VARCHAR(20),
-vencimiento DATE,
-descripcion VARCHAR(255),
-limite DECIMAL(8, 2),
-nombre_usuario VARCHAR(10),
-FOREIGN KEY (nombre_usuario) REFERENCES Usuario (nombre),
-UNIQUE (nombre)
-);
-
-
-
-INSERT INTO Imagen (tipo, imagen)
-VALUES
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Categorias\categorias (1).jpg'),
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Categorias\categorias (2).png'),
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Categorias\categorias (3).png'),
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Categorias\categorias (4).png'),
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Categorias\categorias (5).png'),
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Categorias\categorias (6).png'),
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Categorias\categorias (7).png'),
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Categorias\categorias (8).png'),
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Categorias\categorias (9).png'),
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Categorias\categorias (10).png'),
-
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 31.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 32.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 33.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 34.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 35.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 36.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 37.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 38.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 39.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 40.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 41.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 42.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 43.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 44.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 45.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 46.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 47.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 48.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 49.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 50.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 51.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 52.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 53.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 54.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 55.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 56.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 57.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 58.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 59.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 60.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 61.png'),
-('miscelánea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 62.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 63.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 64.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 65.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 66.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 67.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 68.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 69.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 70.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 71.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 72.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 73.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 74.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 75.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 76.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 77.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 78.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 79.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 80.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 81.png'),
-('Miscelanea', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Miscelanea\Capa 82.png'),
-
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (1).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (2).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (3).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (4).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (5).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (6).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (7).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (8).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (9).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (10).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (11).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (12).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (13).png'),
-('GV', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GV (14).png'),
-('GV', D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GF (1).png'),
-('GF', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GF (2).png'),
-('GF', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GF (3).png'),
-('GF', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GF (4).png'),
-('GF', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GF (5).png'),
-('GF', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GF (6).png'),
-('GF', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GF (7).png'),
-('GF', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GF (8).png'),
-
-
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GF (image21).png'),
-('categoria', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\GF (image22).png'),
-('Relacion', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\Relacion (1).jpg'),
-('Relacion', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\Relacion (1).png'),
-('Relacion', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\Relacion (2).png'),
-('Relacion', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\Relacion (3).png'),
-('Relacion', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\Relacion (4).png'),
-('Relacion', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\Relacion (5).png'),
-('Relacion', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\Relacion (6).png'),
-('Relacion', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\Relacion (7).png'),
-('Relacion', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Subcategorias\Relacion (8).png'),
-
-('Tarjeta', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Tarjetas\TarjetaGrande (1).jpg'),
-('Tarjeta', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Tarjetas\TarjetaGrande (2).jpg'),
-('Tarjeta', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Tarjetas\TarjetaGrande (3).jpg'),
-('Tarjeta', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Tarjetas\TarjetaGrande (4).jpg'),
-('Tarjeta', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Tarjetas\TarjetaGrande (5).jpg'),
-
-('Tarjeta', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Tarjetas\TarjetaPequeña (1).jpg'),
-('Tarjeta', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Tarjetas\TarjetaPequeña (2).jpg'),
-('Tarjeta', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Tarjetas\TarjetaPequeña (3).jpg'),
-('Tarjeta', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Tarjetas\TarjetaPequeña (4).jpg'),
-('Tarjeta', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Tarjetas\TarjetaPequeña (5).jpg'),
-
-
-
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 3.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 4.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 5.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 6.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 7.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 8.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 9.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 10.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 11.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 12.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 13.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 14.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 15.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 16.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 17.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 18.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 19.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 20.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 23.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 24.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 25.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 26.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 27.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 28.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 29.png'),
-('login', 'D:\Programacion\Poryecto_1_Daw\Proyecto\Cuenta\src\main\java\Imagenes\Login\capa 30.png');
-
-
-
-
-
-
-
-
-
-
-if (categoria === 'Elige una categoría' ) {
-  event.preventDefault();        
-  categoriaInput.style.backgroundColor = 'red';
-  categoriaInput.style.color = 'white';   
-}else{
-  categoriaInput.style.backgroundColor = 'transparent';  
-  categoriaInput.style.color = 'black';
-}
-
-if (subcategoria === 'Elige una subcategoría' ) {
-  event.preventDefault();        
-  subcategoriaInput.style.backgroundColor = 'red';
-  subcategoriaInput.style.color = 'white';   
-}else{
-  subcategoriaInput.style.backgroundColor = 'transparent';  
-  subcategoriaInput.style.color = 'black';
-}
-
-if (tipoTarjeta === 'Credito' ) {
-
-      if (fechaTarjetaProcesada > fechaActual ) {
-          event.preventDefault();        
-          fechaTarjetaInput.style.backgroundColor = 'red';
-          fechaTarjetaInput.style.color = 'white';   
-      }else{
-          fechaTarjetaInput.style.backgroundColor = 'transparent';  
-          fechaTarjetaInput.style.color = 'black';
+    break;
+  case "subcategoria":
+    for (var i = 0; i < sub.length; i++) {
+      if (sub[i].idCategoria == textoValue) {
+        numero++;
       }
+    }
 
-      if (tarjeta === 'Seleciona tarjeta' ) {
-          event.preventDefault();        
-          tipoTarjetaInput.style.backgroundColor = 'red';
-          tipoTarjetaInput.style.color = 'white';   
-      }else{
-          tipoTarjetaInput.style.backgroundColor = 'transparent';  
-          tipoTarjetaInput.style.color = 'black';
-      }
+    if (numero == 0) {
+      while (input.firstChild) {
+        input.removeChild(input.firstChild);
+      };
+      nuevoOption = document.createElement("option");
+      nuevoOption.value = "0"
+      nuevoOption.textContent = "Vacio";
+      input.appendChild(nuevoOption);
+      break;
+    }
+
+
+
+    while (input.firstChild) {
+      input.removeChild(input.firstChild);
+    };
+
+    if (textoOption != "Elige una categoría") {
+      nuevoOption = document.createElement("option");
+      nuevoOption.value = textoValue;
+      nuevoOption.textContent = textoOption;
+      input.appendChild(nuevoOption);
+    };
+
+
+    for (var i = 0; i < sub.length; i++) {
+      if (sub[i].idCategoria == textoValue) {
+        numero++;
+        nuevoOption = document.createElement("option");
+        nuevoOption.value = textoValue + "_" + sub[i].id;
+        nuevoOption.textContent = sub[i].nombre;
+        input.appendChild(nuevoOption);
+
+
+
+        break;
+  default:
+    console.log("Nombre de input desconocido");
+    break;
 }
+}
+
+});

@@ -51,7 +51,7 @@ donde va el encabezado de la tabla */
 /* Adapto manualmente la posicion de los botones para que coincidan con las celdas */
 #div_fecha {
     width: 80px;
-    padding-left: 20px;
+    padding-left: 30px;
 }
 
 #div_concepto {
@@ -61,7 +61,7 @@ donde va el encabezado de la tabla */
 
 #div_importe {
     width: 90px;
-    padding-left: 30px;
+    padding-left: 10px;
 
 }
 
@@ -72,17 +72,17 @@ donde va el encabezado de la tabla */
 
 #r_nav_iconos {
     color: gray;
-    padding-left: 50px;
+    padding-left: 70px;
 }
 
 #div_categoria {
-    padding-left: 50px;
+    padding-left: 80px;
 
 }
 
 #r_nav_subcategoria {
     color: gray;
-    padding-left: 20px;
+    padding-left: 30px;
 }
 
 #div_anotaciones {

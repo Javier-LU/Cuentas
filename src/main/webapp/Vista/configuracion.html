@@ -8,11 +8,18 @@
   <link rel="stylesheet" href="CSS/body_header_left.css">
   <link rel="stylesheet" href="CSS/body_header_right.css">
   <link rel="stylesheet" href="CSS/body_warning.css">
+  <link rel="stylesheet" href="CSS/setting.css">
 
   <title>configuracion</title>
+  <style>
+
+  </style>
+
 </head>
 
 <body>
+  <script src="JS/setting.js"></script>
+
   <header id="Cabecera">
     <nav>
       <ul>
@@ -59,11 +66,8 @@
       </ul>
     </nav>
   </header>
-
   <main>
-    <!-- Sección que contiene un div que muestra una advertencia al usuario al intentar eliminar una cuenta.
-    CSS: position: absolute  opacity: 0
-    se activa cuando el usuario pulsa el botón 'Eliminar cuenta' en el menú desplegable que se muestra al hacer clic en el botón de usuario. -->
+    <!-- Div oculto -->
     <section id="eliminar_usuario">
       <article>
         <div id="eliminar_usuario_div_1">
@@ -90,18 +94,140 @@
         </div>
       </article>
     </section>
+    <section id="configuracion">
+      <div id="contenedorUsuariosCategoriaSubcategoria">
+        <div id="prueba" class="laberDiv">
+          <label for="">Configura el usuario</label>
+          <div id="usuario" class="usuarioCategoriaSubcategoria">
+            <img id="usuarioImg" src="Photos/Icon/Login/Capa 3.png" alt="Usuario">
+            <input type="text" value="1">
+          </div>
+        </div>
+        <div class="laberDiv">
+          <label for="">Configura la categoría</label>
+          <div id="categoria" class="usuarioCategoriaSubcategoria">
+            <div class="contendorCategoria">
+              <div class="contenedorIconoText">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="laberDiv">
+          <label for="">Configura la subcategoría</label>
+          <div id="subcategoria" class="usuarioCategoriaSubcategoria">
+          </div>
+        </div>
+      </div>
+      </div>
+      <div id="configuracionContenedor">
+        <div id="gurpoA" class="gurpo">
+          <div id="VacioInvisible" class="laberDiv positionAbsoluteA">
+            <label for="">No ha selecionada nada</label>
+            <div class="contenedorGeneralConfiguracion">
+            </div>
+          </div>
+          <div id="ColorInvisible" class="laberDiv positionAbsoluteA">
+            <label for="">Cambio de color</label>
+            <div class="contenedorGeneralConfiguracion">
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+              <div class="div-pastel"></div>
+            </div>
+          </div>
+          <div id="AvatarInvisible" class="laberDiv positionAbsoluteA">
+            <label for="">Cambia la imagen al avatar</label>
+            <div id="imgAvatar" class="contenedorGeneralConfiguracion">
+            </div>
+          </div>
+          <div id="CategoriaInvisible" class="laberDiv positionAbsoluteA">
+            <label for="">Cambia la imagen a la categoria</label>
+            <div id="imgCagetoría" class="contenedorGeneralConfiguracion">
+              <div id="wrapModificar"></div>
+            </div>
+          </div>
+          <div id="SubcategoriaInvisible" class="laberDiv positionAbsoluteA">
+            <label for="">Cambiala la imagen a la subcagetoría</label>
+            <div id="imgSubcagetoría" class="contenedorGeneralConfiguracion">
+            </div>
+          </div>
+          <div id="masImagen_relative">
+            <div id="masImagen">
+              <form action="../GestionImagenes" id="formImg" method="POST" enctype="multipart/form-data">
+                <label for="file" class="imageM">
+                  <input type="file" id="file" name="photo" accept="image/*">
+                  +
+                  <input type="text" id="tipoImagen" name="ima">
+                  <input type="text" id="imgform" name="imgform2">
+                </label>
+              </form>
+              <button id="basura" class="imageM"><img
+                  src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png"></button>
+            </div>
+          </div>
+        </div>
+        <div id="gurpoB" class="gurpo">
 
-    
-    
+          <div id="bottonGurpo_relative">
+            <button id="bottonGurpoB" class="imageM">Tarjeta</button>
+          </div>
+          <div id="RestriccionesContenedor" class="positionAbsoluteB">
+            <div class="laberDiv">
+              <label for="">Restricciones</label>
+              <div id="contenedorR">
+                <div id="tabla">
 
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="TarjetaContenedor" class="positionAbsoluteB">
+            <div class="laberDiv">
+              <label for="">Tarjetas</label>
+              <div id="contenedorR">
+                <div id="tabla_tarjeta">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
-
   <footer>
     <p>&copy; 2023 Poryecto final de primero de programación de aplicaciones web.</p>
   </footer>
-  <script src="../JS/body_header_right.js"></script>
-  <script src="../JS/Body_warning.js"></script>
-  <script src="../JS/body_window_onload.js"></script>
+
+  
+  <script src="JS/body_header_right.js"></script>
+  <script src="JS/Body_warning.js"></script>
+  <script src="JS/body_window_onload.js"></script>
+
+  <script>
+
+  </script>
 
 </body>
 

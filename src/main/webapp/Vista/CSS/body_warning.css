@@ -3,6 +3,7 @@
 /* Estilo de la sección con id eliminar usuario */
 #eliminar_usuario {
     /* Defino una posición absoluta para quitarle del flujo posicionarlo en el centro */
+    pointer-events: none;
     position: absolute;
     z-index: 100;
     top: 50%;

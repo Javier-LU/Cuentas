@@ -87,6 +87,7 @@ body_header_right defino los estilos de los botones e imagenes de la derecha. */
     se active el boton */
     pointer-events: none;
     opacity: 0;
+    z-index: 100;
 
     /* Posición del div */
     position: absolute;

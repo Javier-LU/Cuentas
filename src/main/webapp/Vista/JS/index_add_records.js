@@ -1,3 +1,5 @@
+// Posiblemente sea una prueba o un codigo descartado. 
+
 document.querySelector('form_add_records').addEventListener('submit', function(event) {
     var fecha = document.getElementById('cr_fecha').value;
     var concepto = document.getElementById('cr_concepto').value;

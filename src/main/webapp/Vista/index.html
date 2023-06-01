@@ -10,19 +10,25 @@
   <link rel="stylesheet" href="CSS/body_warning.css">
   <link rel="stylesheet" href="CSS/Index.css">
   <link rel="stylesheet" href="CSS/index_main_header.css">
-
   <link rel="stylesheet" href="CSS/index.css">
   <link rel="stylesheet" href="CSS/index_main_date_search.css">
   <link rel="stylesheet" href="CSS/index_main_nav.css">
   <link rel="stylesheet" href="CSS/index_main_records_header.css">
   <link rel="stylesheet" href="CSS/index_main_records.css">
   <link rel="stylesheet" href="CSS/index_records_dinamic.css">
-
-
   <title>Index</title>
 </head>
-
 <body>
+
+  <script src="JS/body_header_right.js"></script>
+  <script src="JS/Body_warning.js"></script>
+  <script src="JS/body_window_onload.js"></script>
+  <!-- <script src="JS/index_nav_records.js"></script> -->
+  <script src="JS/index_date_range.js"></script>
+  <script src="JS/index_add.js"></script>
+  <script src="JS/index_add.js"></script>
+  <script src="JS/index_records.js"></script>
+  
   <header id="Cabecera">
     <nav>
       <ul>
@@ -37,20 +43,17 @@
               alt="Resumenes">Resúmenes</a>
         </li>
       </ul>
-
       <ul id="Cabecera_derecha">
         <li id="Cabecera_derecha_li">
           <a href="configuracion.html">
             <img src="Photos/Iconos_aplicacion/Blancos/BConfiguracion.png" alt="Configuración">
           </a>
         </li>
-
         <li id="CD_boton">
           <button id="boton_usuarios">
             <img src="Photos/Iconos_aplicacion/Blancos/Usuario.png" alt="Icono de usuario">
             Usuario
           </button>
-
           <div id="boton_usuarios_desliegue">
             <button id="eliminarCuenta">
               Eliminar usuario
@@ -64,11 +67,8 @@
       </ul>
     </nav>
   </header>
-
   <main>
-    <!-- Sección que contiene un div que muestra una advertencia al usuario al intentar eliminar una cuenta.
-    CSS: position: absolute  opacity: 0
-    se activa cuando el usuario pulsa el botón 'Eliminar cuenta' en el menú desplegable que se muestra al hacer clic en el botón de usuario. -->
+    <!-- Div oculto -->
     <section id="eliminar_usuario">
       <article>
         <div id="eliminar_usuario_div_1">
@@ -97,8 +97,6 @@
     </section>
     <!-- Header -->
     <header id="header_main">
-
-
       <!-- Ahorrado/Gastado -->
       <div class="header_div">
         <p class="header_p3">Ahorrado/Gastado</p>
@@ -126,7 +124,6 @@
         <p id="texto_prevision_ahorrado" class="header_p2">4000€</p>
       </div>
     </header>
-
     <section id="seccion_principal">
       <article id="sp_navegacion">
         <div class="sombra">
@@ -157,7 +154,6 @@
         </div>
         <nav id="sp_nav">
           <form>
-
             <input type="text" id="sp_busqueda" name="nombre">
             <button id="sp_boton_busqueda" class="sp_boton" type="submit"><img
                 src="Photos/Iconos_aplicacion/Blancos/Nav_little/Lupa.png" alt="Lupa"></button>
@@ -174,16 +170,11 @@
               alt="Añadir"></button>
           <button id="sp_basura" class="sp_boton"><img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png"
               alt="basura"></button>
-
-
         </nav>
       </article>
-
       <article id="registros">
-
         <div id="rango_fecha_relative">
           <div id="rango_fecha">
-
             <form id="rango_fechas_aceptar" action="/" method="POST">
               <div id="texto_rango_Fecha">
                 <p>Rango de fechas</p>
@@ -201,14 +192,10 @@
                 <input class="rango_fechas_buttons" type="submit" value="Aceptar">
               </div>
             </form>
-
           </div>
         </div>
-
         <div id="r_header">
-
           <nav id="r_nav">
-
             <div id="div_fecha" class="r_nav_div">
               <img id="up_Fecha" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Arriba2.png" alt="arriba">
               <img id="down_Fecha" class="r_nav_imagen" src="Photos/Iconos_aplicacion/Abajo2.png" alt="abajo">
@@ -246,48 +233,32 @@
               <button id="button_gasto" class="r_nav_button">Tipo de gasto</button>
             </div>
           </nav>
-
           <div id="r_linea">
             <hr>
           </div>
-
         </div>
-
-        <!-- fffffffffffffffffffffffffffffffffffffffffffffffff -->
-
         <div id="contenedor">
           <div id="contenedor_fondo_registro_id" class="contenedor_fondo_registro">
-            <!-- fffffffffffffffffffffffffffffffffffffffffffffffff -->
             <div class="contenedor_registro">
               <form id="form_add_records" action="../gestionGastos" method="POST" target="_self">
                 <input type="date" id="cr_fecha" class="input registro_fecha" name="date">
                 <input type="text" id="cr_concepto" class="input registro_concepto" name="concepto">
                 <input type="number" id="cr_importe" class="input registro_importe" name="importe">
                 <input type="number" id="cr_saldo" class="input registro_saldo" name="saldo">
-
                 <div class="registro_imagenes">
                   <img src="Photos/Iconos_aplicacion/Categorias/DV.png" alt="Categoría">
                   <img src="Photos/Iconos_aplicacion/Categorias/GF.png" alt="Subcategoría">
                 </div>
-
                 <select id="cr_categoria" class="input registro_categoria" name="categoria">
                   <option value="1">Elige una categoría</option>
-                  <option value="2">segunda opcion</option>
-                </select>
+                  <option value="2">segunda opcion</option>                </select>
                 <select id="cr_subcategoria" class="input registro_subcategoria" name="subcategoria">
                   <option value="1">Falta categoría</option>
                   <option value="2">Fal23232</option>
-
                 </select>
                 <textarea id="cr_anotaciones" class="input registro_anotaciones" name="anotaciones"></textarea>
-
-
-
                 <div class="contenedor_tipo_tarjeta2">
-
                   <div class="contenedor_Tarjeta1">
-
-
                     <select id="cr_credito" class="input registro_tar" name="credito_Debito">
                       <option value="1">Debito</option>
                       <option value="2">C.Total. Credito de gasto acumulado</option>
@@ -300,158 +271,20 @@
                       <option value="1">Seleciona tarjeta</option>
                     </select>
                   </div>
-
                 </div>
-
-
                 <input id="boton_registro_añadir" type="submit" value="+">
               </form>
-
             </div>
           </div>
-
-          <!-- ------------------------------------------------------------------------------------  -->
-          <!-- ************************************************************************************  -->
-          <!-- ------------------------------------------------------------------------------------  -->
           <div id="contenedor_registros_dinamicos">
-
-            <div class="contenedor_fondo_registro">
-              <div class="contenedor_registro">
-                <input type="date" id="registro_1" class="input registro_fecha" name="date">
-
-                <input type="text" id="registro_2" class="input registro_concepto" name="concepto">
-                <input type="number" id="registro_3" class="input registro_importe" name="importe">
-                <input type="number" id="registro_4" class="input registro_saldo" name="saldo">
-
-                <div class="registro_imagenes">
-                  <img src="Photos/Iconos_aplicacion/Categorias/DV.png" alt="Categoría">
-                  <img src="Photos/Iconos_aplicacion/Categorias/GF.png" alt="Subcategoría">
-                </div>
-
-                <select id="registro_5" class="input registro_categoria" name="categoria">
-                  <option value="1">Elige una categoría</option>
-                  <option value="2">segunda opcion</option>
-                </select>
-                <select id="registro_6" class="input registro_subcategoria" name="subcategoria">
-                  <option value="1">Falta categoría</option>
-                  <option value="2">Fal23232</option>
-
-                </select>
-                <textarea id="registro_7" class="input registro_anotaciones" name="Anotaciones"></textarea>
-
-
-                <div class="contenedor_tipo_tarjeta2">
-
-                  <div class="contenedor_Tarjeta1">
-
-
-                    <select id="registro_8" class="input registro_tar" name="credito">
-                      <option value="1">Debito</option>
-                      <option value="2">C.Total. Credito de gasto acumulado</option>
-                      <option value="3">C.General. Credito de gasto pendiente.</option>
-                    </select>
-                    <input type="date" id="registro_9" class="input registro_tarjeta_fecha" name="fecha_tarjeta">
-                  </div>
-                  <div>
-                    <select id="registro_10" class="input registro_tarjeta_tipo" name="tipo_tarjeta">
-                      <option value="1">Seleciona tarjeta</option>
-                    </select>
-                  </div>
-
-                </div>
-
-
-
-              </div>
-              <div class="botones_main">
-                <button class="buttons_up"> <img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png"
-                    alt="Subcategoría"></button>
-                <button class="buttons_down"> <img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png"
-                    alt="Subcategoría"></button>
-              </div>
-            </div>
-
-
-
-
           </div>
-
-
-
-
-
-          <!-- Fin del contenedor de registros -->
         </div>
-
-
-
-
+        </div>
       </article>
-
     </section>
-
-
   </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <footer>
     <p>&copy; 2023 Poryecto final de primero de programación de aplicaciones web.</p>
   </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <script src="JS/body_header_right.js"></script>
-  <script src="JS/Body_warning.js"></script>
-  <script src="JS/body_window_onload.js"></script>
-  <script src="JS/index_nav_records.js"></script>
-  <script src="JS/index_date_range.js"></script>
-  <!-- <script src="JS/index_add.js"></script> -->
-
-
-  </script>
-
-
 </body>
-
 </html>

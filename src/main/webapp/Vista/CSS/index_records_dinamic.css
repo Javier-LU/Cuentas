@@ -33,7 +33,7 @@
 border-radius: 20px 0 0 20px;
 width: 112px;
 margin-left: 0px;
-padding-left: 0px;
+padding-left: 10px;
 }
 
 .registro_concepto{
@@ -56,12 +56,12 @@ padding-left: 0px;
 }
 
 .registro_subcategoria{
-    background-color: gray;
-    color: white;
+    
+    
     width: 124px;    
     padding: 5px;
     font-size: 12px;
-    pointer-Events: none;
+    
 }
 
 .registro_anotaciones{
@@ -163,3 +163,23 @@ padding-left: 0px;
   font-size: 25px;
 }
 
+.mes1:hover {
+    background-color: transparent;
+  }
+
+  .mes2 {
+    background-color: rgb(172, 170, 170);
+  }
+
+  .mes3 {
+    padding: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+    border-radius: 40px;
+    background-color: white;
+    opacity: 80%;
+  }
+
+  .year {
+    background-color: rgb(255, 197, 89);
+  }

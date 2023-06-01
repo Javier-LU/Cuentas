@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cargar imagen</title>
+  <style>
+  img {
+  background-color: black;
+  }
+  </style>
+
+</head>
+<body>
+  <script>
+  function llamar(url) {
+	  fetch(url)
+	    .then(res => res.json())
+	    .then(res => {
+	      console.log("Hola estamos");
+	      console.log(res);
+	      pintar(res);
+	    })
+	    .catch(error => {
+	    	
+	      console.log(error);
+	 
+	      console.log("Hola");
+	    });
+	}
+  
+	function pintar(datos) {
+	  let htm = "<table>";
+	  for (i = 0; i < datos.length; i++) {
+		htm += "<tr><td>"  + datos[i].img +  "</td></tr>";;
+	    htm += "<tr><td><img src='"  + datos[i].img +  "' ></td></tr>";;
+	    htm += "<tr><td>" + "hola" + "</td></tr>";
+	  }
+	  htm += "</table>";
+	  document.getElementById("resultados").innerHTML = htm;
+	  console.log(datos);
+	}
+
+	window.onload = function() {
+	  llamar("../gestionImagenUsuario");
+	  console.log("Hola, esto es un mensaje en la consola");
+	}
+
+	if (text !== text1 && text !== text2) {
+    var newText = "";
+    for (let i = 0; i < text.length + 1 ; i++) {
+
+        setTimeout(function () {
+            newText = text.slice(0, -i);
+            texto.textContent = newText;
+
+            if (i === text.length ) {
+                texto.style.color = 'red';
+                for (let j = 0; j < text1.length; j++) {
+                    setTimeout(function () {
+                        newText += text1[j];
+                        texto.textContent = newText;
+						
+                    }, j * 50);
+                }
+            }
+        }, i * 50);
+    }
+
+	
+  </script>
+
+<h1>cosas</h1>
+ <img src="Photos/Iconos_aplicacion/Blancos/BConfiguracion.png" alt="Configuración">
+<img src="Photos/Icon/Login/Capa 5.png" >
+<br>
+<br>
+<br>
+<a href="../prueba">ejecutar</a>
+<div id="resultados"></div>
+</body>
+</html>
+
+
+
