@@ -13,6 +13,16 @@ import modelo.Gastos;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
+
+/**
+* La clase DaoImgenes proporciona métodos para realizar operaciones relacionadas con las gastos en la base de datos.
+* Estas operaciones son: actualizar, buscar, ordenar y crear registros. 
+* 
+* @param con	La conexión a la base de datos.
+* 
+* @author  Javier Luque Pardo
+*/
 public class DaoGastos {
 
 	
@@ -22,6 +32,14 @@ public class DaoGastos {
 		con = DBConection.getConnection();
 	}
 	
+	/**
+	 * Obtiene una lista de gastos basada en una serie de parámetros. Si la longitud de "key" es mayor o igual a 3,
+	 * realiza la búsqueda del valor de "key" en diferentes columnas de la base de datos. Si es menor a 3, dependiendo del valor de "key",
+	 * se lanza una consulta prepareStatement específica. Estas consultas se utilizan para obtener listas ordenadas según los parámetros necesarios.
+	 *
+	 * @return La lista de gastos resultante.
+	 * @throws SQLException Si ocurre un error al ejecutar la consulta.
+	 */
 	private ArrayList<Gastos> listarCategoria() throws SQLException {
 		Gastos g = new Gastos();
 		Date f1 = g.getFecha1();
@@ -30,201 +48,162 @@ public class DaoGastos {
 		PreparedStatement ps = null; 
 		 ResultSet rs = null;
 		
-		if (key == null) {
-	     ps = con.prepareStatement("select ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta from vista_gasto;");
-		} else if (key.length() >= 3) {
-			
-			
-			ps = con.prepareStatement("SELECT COUNT(*) FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND nombre_categoria = ?;");
+		 if (key == null) {
+			 	// Por si acaso la key tubiese un valor nulo
+			    ps = con.prepareStatement("select ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta from vista_gasto;");
+			} else if (key.length() >= 3) {
+				// Desde este línea de código, es el código empleado para realizar las búsquedas. Primero buscará en categorías, si no encuentra nada, en subcategorías y por ultimo en concepto.  
+			    ps = con.prepareStatement("SELECT COUNT(*) FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND nombre_categoria = ?;");
+			    ps.setDate(1, new java.sql.Date(f2.getTime()));
+			    ps.setDate(2, new java.sql.Date(f1.getTime()));
+			    ps.setString(3, key);
+			    rs = ps.executeQuery();
+			    if (rs.next() && rs.getInt(1) > 0) {
+			        ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND nombre_categoria = ? ORDER BY fecha DESC;");
+			        ps.setDate(1, new java.sql.Date(f2.getTime()));
+			        ps.setDate(2, new java.sql.Date(f1.getTime()));
+			        ps.setString(3, key);
+			    } else {
+			        ps = con.prepareStatement("SELECT COUNT(*) FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND nombre_subcategoria = ?;");
 			        ps.setDate(1, new java.sql.Date(f2.getTime()));
 			        ps.setDate(2, new java.sql.Date(f1.getTime()));
 			        ps.setString(3, key);
 			        rs = ps.executeQuery();
-			        
-			        if(rs.next() && rs.getInt(1) > 0) {
-			        	ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND nombre_categoria = ? ORDER BY fecha DESC;");
-			        	 ps.setDate(1, new java.sql.Date(f2.getTime()));
-					     ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    ps.setString(3, key);
-			        }else {
-			        	ps = con.prepareStatement("SELECT COUNT(*) FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND nombre_subcategoria = ?;");
-			          	 ps.setDate(1, new java.sql.Date(f2.getTime()));
-					     ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    ps.setString(3, key);
-					    rs = ps.executeQuery();
-					    
-					    if(rs.next() && rs.getInt(1) > 0) {
-				        	ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND nombre_subcategoria = ? ORDER BY fecha DESC;");
-				        	 ps.setDate(1, new java.sql.Date(f2.getTime()));
-						     ps.setDate(2, new java.sql.Date(f1.getTime()));
-						     ps.setString(3, key);
-					    } else {
-					    	ps = con.prepareStatement("SELECT COUNT(*) FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND concepto LIKE ? ;");
-					    	
-					    	 ps.setDate(1, new java.sql.Date(f2.getTime()));
-						     ps.setDate(2, new java.sql.Date(f1.getTime()));
-						     ps.setString(3, "%" + key + "%");
-						     rs = ps.executeQuery();
-						     
-						     if(rs.next() && rs.getInt(1) > 0) {
-						    	 ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND concepto LIKE ? ORDER BY fecha DESC;");	 
-						    	 ps.setDate(1, new java.sql.Date(f2.getTime()));
-							     ps.setDate(2, new java.sql.Date(f1.getTime()));
-							     ps.setString(3, "%" + key + "%");
-					    } else {
-					    	System.out.println("Sin resultados ");
-					    }
-					    }
-			        	
+
+			        if (rs.next() && rs.getInt(1) > 0) {
+			            ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND nombre_subcategoria = ? ORDER BY fecha DESC;");
+			            ps.setDate(1, new java.sql.Date(f2.getTime()));
+			            ps.setDate(2, new java.sql.Date(f1.getTime()));
+			            ps.setString(3, key);
+			        } else {
+			            ps = con.prepareStatement("SELECT COUNT(*) FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND concepto LIKE ? ;");
+			            ps.setDate(1, new java.sql.Date(f2.getTime()));
+			            ps.setDate(2, new java.sql.Date(f1.getTime()));
+			            ps.setString(3, "%" + key + "%");
+			            rs = ps.executeQuery();
+
+			            if (rs.next() && rs.getInt(1) > 0) {
+			                ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? AND concepto LIKE ? ORDER BY fecha DESC;");
+			                ps.setDate(1, new java.sql.Date(f2.getTime()));
+			                ps.setDate(2, new java.sql.Date(f1.getTime()));
+			                ps.setString(3, "%" + key + "%");
+			            } else {
+			                System.out.println("Sin resultados");
+			            }
 			        }
-			  
-			
-			
+			    }			
 		} else {
 		
-		
-		switch (key) {
-		
-		case "f1":		
-		ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY fecha DESC;");
-	        ps.setDate(1, new java.sql.Date(f2.getTime()));
-	        ps.setDate(2, new java.sql.Date(f1.getTime()));
-	        break;
-		case "c1":
-			ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, concepto DESC;");
-			ps.setDate(1, new java.sql.Date(f2.getTime()));
-	        ps.setDate(2, new java.sql.Date(f1.getTime()));	        
-	        break;
-		case "c2":		
-				ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, concepto ASC;");
-		        ps.setDate(1, new java.sql.Date(f2.getTime()));
-		        ps.setDate(2, new java.sql.Date(f1.getTime()));
-		        break;
-		case "c3":		
-					ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, concepto DESC;");
-			        ps.setDate(1, new java.sql.Date(f2.getTime()));
-			        ps.setDate(2, new java.sql.Date(f1.getTime()));
-			        break;
-		case "c4":			
-					ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, concepto ASC;");
-			        ps.setDate(1, new java.sql.Date(f2.getTime()));
-			        ps.setDate(2, new java.sql.Date(f1.getTime()));
-			        break;
-		case "i1":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, importe DESC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "i2":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, importe ASC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "i3":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, importe DESC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-		case "i4":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, importe ASC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "s1":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, saldo DESC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "s2":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, saldo ASC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "s3":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, saldo DESC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "s4":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, saldo ASC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "n1":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, nombre_categoria DESC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "n2":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, nombre_categoria ASC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "n3":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, nombre_categoria DESC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "n4":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, nombre_categoria ASC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "a1":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, anotaciones DESC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "a2":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, anotaciones ASC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "a3":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ?  ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, anotaciones DESC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-		case "a4":
-					    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, anotaciones ASC;");
-					    ps.setDate(1, new java.sql.Date(f2.getTime()));
-					    ps.setDate(2, new java.sql.Date(f1.getTime()));
-					    break;
-					}}
+			// Según el valor de la key lanza una consulta u otra. 
+			switch (key) {
+			
+			case "f1":		
+							ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY fecha DESC;");
+						        ps.setDate(1, new java.sql.Date(f2.getTime()));
+						        ps.setDate(2, new java.sql.Date(f1.getTime()));
+						        break;
+			case "c1":
+							ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, concepto DESC;");
+							ps.setDate(1, new java.sql.Date(f2.getTime()));
+					        ps.setDate(2, new java.sql.Date(f1.getTime()));	        
+					        break;
+			case "c2":		
+							ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, concepto ASC;");
+					        ps.setDate(1, new java.sql.Date(f2.getTime()));
+					        ps.setDate(2, new java.sql.Date(f1.getTime()));
+					        break;
+			case "c3":		
+							ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, concepto DESC;");
+					        ps.setDate(1, new java.sql.Date(f2.getTime()));
+					        ps.setDate(2, new java.sql.Date(f1.getTime()));
+					        break;
+			case "c4":			
+							ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, concepto ASC;");
+					        ps.setDate(1, new java.sql.Date(f2.getTime()));
+					        ps.setDate(2, new java.sql.Date(f1.getTime()));
+					        break;
+			case "i1":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, importe DESC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "i2":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, importe ASC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "i3":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, importe DESC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+			case "i4":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, importe ASC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "s1":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, saldo DESC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "s2":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, saldo ASC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "s3":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, saldo DESC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "s4":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, saldo ASC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "n1":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, nombre_categoria DESC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "n2":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, nombre_categoria ASC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "n3":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, nombre_categoria DESC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "n4":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, nombre_categoria ASC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "a1":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, anotaciones DESC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "a2":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) DESC, MONTH(fecha) DESC, anotaciones ASC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "a3":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ?  ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, anotaciones DESC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			case "a4":
+						    ps = con.prepareStatement("SELECT ID_gasto, fecha, concepto, importe, saldo, imagen_categoria, imagen_subcategoria, nombre_categoria, nombre_subcategoria, color, Id_sub, Id_catSub, anotaciones, nombre_tarjeta, mes_tarjeta, tipo_tarjeta FROM vista_gasto WHERE fecha BETWEEN ? AND ? ORDER BY YEAR(fecha) ASC, MONTH(fecha) ASC, anotaciones ASC;");
+						    ps.setDate(1, new java.sql.Date(f2.getTime()));
+						    ps.setDate(2, new java.sql.Date(f1.getTime()));
+						    break;
+			}
+		}
 
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	    
-	    
 	    rs = ps.executeQuery();
 	    ArrayList<Gastos> result = new ArrayList<>();
 	    while (rs.next()) {
@@ -262,7 +241,12 @@ public class DaoGastos {
 	
 	
 	
-	
+    /**
+     * Obtiene un objeto JSON que representa la lista de gastos.
+     *
+     * @return El objeto JSON que representa la lista de gastos.
+     * @throws SQLException Si ocurre un error al ejecutar la consulta.
+     */	
 	public String damejsonGastos() throws SQLException {
 		String json = "";
 		Gson son = new Gson();	
@@ -273,10 +257,13 @@ public class DaoGastos {
 	}
 	
 	
-	
-	public void insertGastos (Gastos a) throws SQLException {
-	
-		
+	/**
+	 * Inserta un objeto de tipo Gastos en la base de datos.
+	 *
+	 * @param a El objeto Gastos a insertar.
+	 * @throws SQLException Si ocurre un error al ejecutar la consulta.
+	 */
+	public void insertGastos (Gastos a) throws SQLException {	
 		PreparedStatement ps = con.prepareStatement("INSERT INTO gasto (fecha, concepto, importe, saldo, ID_categoria, ID_subcategoria, anotaciones, ID_Tarjeta, mes_Tarjeta, tipo_tarjeta) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		ps.setDate(1, new java.sql.Date(a.getFecha().getTime()));
 		ps.setString(2, a.getConcepto());
@@ -288,22 +275,22 @@ public class DaoGastos {
 		ps.setInt(8, a.getCreditoDebito());		
 		ps.setDate(9, (a.getFechaTarjeta() != null) ? new java.sql.Date(a.getFechaTarjeta().getTime()) : null);
 		ps.setInt(10, a.getTipoTarjeta());
-
-		ps.executeUpdate();
-
-		
+		ps.executeUpdate();		
 		ps.close(); 
 	}
 	
-	
-	
-	public void uptdateGastos (Gastos a) throws SQLException{
-		
+
+	/**
+	 * Actualiza un objeto de tipo Gastos en la base de datos.
+	 * Dependiendo del valor de la Key ejecutará una consulta u otra. 
+	 *
+	 * @param a El objeto Gastos a actualizar.
+	 * @throws SQLException Si ocurre un error al ejecutar la consulta.
+	 */	
+	public void uptdateGastos (Gastos a) throws SQLException{		
 		String key = a.getKey();
-		int id = a.getID();
-		
+		int id = a.getID();		
 		PreparedStatement ps = null;
-		
 		
 	    switch (key) {
 	    case "da":
@@ -370,30 +357,6 @@ public class DaoGastos {
 		
 		
 	}
-	
-	
-	
-	
-	
-	/*
-	public ArrayList<DaoUsuariosImagenes> listar() throws SQLException {
-	    PreparedStatement ps = con.prepareStatement("SELECT imagen FROM imagen WHERE tipo = 'login'");
-	    ResultSet rs = ps.executeQuery();
 
-	    ArrayList<DaoUsuariosImagenes> result = new ArrayList<>();
-
-	    while (rs.next()) {
-	        result.add(new DaoUsuariosImagenes(rs.getString("imagen")));
-	    }
-
-	    return result;
-	}
-
-
-	
-	if (result == null) {
-		result = ArrayList<>();
-	}
-	*/
 }
 

@@ -21,7 +21,9 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 
 /**
- * Servlet implementation class prueba
+ * Servlet implementation class prueba. Uso del doGet.
+ * 
+ * @author  Javier Luque Pardo
  */
 @WebServlet("/gestionImagenUsuario")
 public class GestionImagenUsuario extends HttpServlet {
@@ -34,28 +36,26 @@ public class GestionImagenUsuario extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
+    /**
+     * Procesa las solicitudes HTTP GET enviadas al servlet. Obtiene información de usuarios y categorías desde
+     * la base de datos y genera una respuesta en formato JSON que contiene los datos obtenidos.
+     *
+     * @param request  La solicitud HTTP recibida.
+     * @param response La respuesta HTTP que se enviará.
+     * @throws ServletException Si ocurre un error durante el procesamiento del servlet.
+     * @throws IOException      Si ocurre un error de E/S durante el procesamiento del servlet.
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		try {
 			DaoUsuarios c = new DaoUsuarios();
 			String respuestaC;
 			String usuarios;
 			respuestaC = c.damejson();
 			usuarios = c.damejsonUsuarios();
-			//System.out.println(respuestaC);
-			//System.out.println(usuarios);
-			
-			
-			    //out.println(respuestaC);
-			    //out.close();
+
 			Gson gson = new Gson();
 
-			// Crear un JsonObject y agregar propiedades
 			JsonObject respuesta = new JsonObject();
 			respuesta.addProperty("respuestaC", respuestaC);
 			respuesta.addProperty("usuarios", usuarios);
@@ -68,33 +68,11 @@ public class GestionImagenUsuario extends HttpServlet {
 			 System.out.println(respuestaJSON);
 			 
 			 out.close();
-
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		 
-		
-		
-		/*
-		try {
-			DaoUsuarios c = new DaoUsuarios();
-			ArrayList<Imagenes> lista = c.listar();
-			for (Imagenes imagen : lista) {
-				
-			    System.out.println(imagen.toString());
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("Error de conexion a la bd");
-			response.sendRedirect("/errores.html");
-		}
-		*/
-
-		
 	}
 
 	/**

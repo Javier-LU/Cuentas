@@ -24,7 +24,10 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 
 /**
- * Servlet implementation class GestionGastosDoSertUpdate
+ * Servlet implementation class GestionGastosDoSertUpdate Uso del doPost.
+ * 
+ * @author  Javier Luque Pardo
+ * 
  */
 @WebServlet("/GestionGastosDoSertUpdate")
 @MultipartConfig
@@ -33,7 +36,8 @@ public class GestionGastosDoSertUpdate extends HttpServlet {
 
     /**
      * Default constructor. 
-     */
+      * 
+	 */
     public GestionGastosDoSertUpdate() {
         // TODO Auto-generated constructor stub
     }
@@ -47,6 +51,13 @@ public class GestionGastosDoSertUpdate extends HttpServlet {
 	}
 
 	/**
+	 * Procesa las solicitudes HTTP POST enviadas al servlet. Recibe los parámetros de unos datos específicos  y de clave desde el cliente,
+	 * los convierte al formato adecuado y los asigna a un objeto Gastos.
+	 *
+	 * @param request 		 	La solicitud HTTP recibida.
+	 * @param response 			La respuesta HTTP que se enviará.
+	 * @throws ServletException Si ocurre un error durante el procesamiento del servlet.
+	 * @throws IOException      Si ocurre un error de E/S durante el procesamiento del servlet.	 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -56,29 +67,17 @@ public class GestionGastosDoSertUpdate extends HttpServlet {
 	 	Date fecha = null;
 	 	String auxString1 = "";
 	 	String auxString2 = "";
-	 	int aux = 0;
-	 
+	 	int aux = 0;	 
 	 	
 		Part partDato = request.getPart("dateUpdate");
 	    Part partId = request.getPart("id");
-	    Part partKey = request.getPart("llave");
+	    Part partKey = request.getPart("llave"); 
 	    
-
-	    
-	    String key = request.getParameter("llave");
-	    
-	    
+	    String key = request.getParameter("llave");	    
 	    auxString1 = request.getParameter("id");
 	    auxString2 = auxString1.substring(2);
 	    auxString1 = auxString2.trim();
-
 	    int id = Integer.parseInt(auxString1);
-	    System.out.println("----------------------------------------------------------");
-	    System.out.println("----------------------------------------------------------");
-	    System.out.println(id);
-	    System.out.println("----------------------------------------------------------");
-	    System.out.println("----------------------------------------------------------");
-	    
 	    
 	    String dato = request.getParameter("dateUpdate");
 	    
@@ -86,7 +85,7 @@ public class GestionGastosDoSertUpdate extends HttpServlet {
 	    g.setID(id);
 	    
 	    
-	    
+	    // Deoebduebdi dek vakir de la llave enviará un dato u otro al modelo Gastos. 
 	    switch (key) {
 	    case "da":
 	    	  try {
@@ -135,6 +134,7 @@ public class GestionGastosDoSertUpdate extends HttpServlet {
 	      break;
 	  }
 	    	
+	   
 	    try {
 			g.update();
 		} catch (SQLException e) {

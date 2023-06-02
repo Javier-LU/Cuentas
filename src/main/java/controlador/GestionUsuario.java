@@ -22,7 +22,9 @@ import java.sql.SQLException;
 
 
 /**
- * Servlet implementation class CrearUsuario
+ * Servlet implementation class CrearUsuario. Uso del doPost.
+ * 
+ * @author  Javier Luque Pardo
  */
 @WebServlet("/GestionUsuario")
 public class GestionUsuario extends HttpServlet {
@@ -44,6 +46,13 @@ public class GestionUsuario extends HttpServlet {
 	}
 
 	/**
+	 * Procesa las solicitudes HTTP POST enviadas al servlet. Inserta un nuevo usuario en la base de datos
+	 * utilizando los parámetros recibidos en la solicitud.
+	 *
+	 * @param request  La solicitud HTTP recibida.
+	 * @param response La respuesta HTTP que se enviará.
+	 * @throws ServletException Si ocurre un error durante el procesamiento del servlet.
+	 * @throws IOException      Si ocurre un error de E/S durante el procesamiento del servlet.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

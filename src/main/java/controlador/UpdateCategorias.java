@@ -22,7 +22,10 @@ import java.sql.SQLException;
 
 
 /**
- * Servlet implementation class UpdateCategorias
+ * Servlet implementation class UpdateCategorias. Uso del doPost
+ * 
+ * @author  Javier Luque Pardo
+ * 
  */
 @WebServlet("/UpdateCategorias")
 @MultipartConfig
@@ -45,6 +48,21 @@ public class UpdateCategorias extends HttpServlet {
 	}
 
 	/**
+	 * Este método se invoca cuando se realiza una solicitud HTTP POST al servlet. 
+	 * Recibe los datos enviados en la solicitud y realiza acciones basadas en esos datos.
+	 * 
+	 * @param idCatSubstring 		Substring de la cadena "idCat".
+	 * @param idCatInt 				Entero obtenido a partir de "idCatSubstring".
+	 * @param idImgCatSubstring 	Substring de la cadena "idImg".
+	 * @param idImgInt 				Entero obtenido a partir de "idImgCatSubstring".
+	 * @param idCatSinLetraINT 		Entero obtenido a partir de "idCatSinLetra".
+	 * @param primeraLetra 			Primera letra de "idCat".
+	 * @param primeraLetraColor 	Primera letra de "idColor".
+	 * 
+	 * @param request  la solicitud HTTP recibida.
+	 * @param response la respuesta HTTP que se enviará al cliente.
+	 * @throws ServletException si ocurre un error en el servlet.
+	 * @throws IOException      si ocurre un error de entrada/salida.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,75 +75,37 @@ public class UpdateCategorias extends HttpServlet {
 	     char primeraLetra = 0;
 	     String primeraLetraColor = "";
 	     
-		
-		
-		Part partCat = request.getPart("idCat");
-	    Part partImg = request.getPart("idImg");
-	    Part partNombre = request.getPart("idNombre");
-	    Part partColor = request.getPart("idcolor");
-	    Part partidCatSinLetra = request.getPart("idCatSinLetra");
-	    
-	    
+	     // Obtener los datos de los parámetros enviados en la solicitud	
 	    String idCat = request.getParameter("idCat");
 	    String idImg = request.getParameter("idImg");
 	    String idNombre = request.getParameter("idNombre");
 	    String idColor = request.getParameter("idcolor");
 	    String idCatSinLetra = request.getParameter("idCatSinLetra");
 	    
-	    
-	    System.out.println("╔════════════════════════════════╗");
-	    System.out.println("║        Título Bonito            ║");
-	    System.out.println("╚════════════════════════════════╝");
-	    
-	    System.out.println("Valor de idCat: " + idCat);
-	    System.out.println("Valor de idImg: " + idImg);
-	    System.out.println("Valor de idNombre: " + idNombre);
-	    System.out.println("Valor de idColor: " + idColor);
-	    System.out.println("Valor de idCatSinLetra: " + idCatSinLetra);
-	    System.out.println("╔════════════════════════════════╗");
-	    System.out.println("║        Título Bonito            ║");
-	    System.out.println("╚════════════════════════════════╝");
-	    
-	    
-	    // Realiza acciones con los datos rescatados
-	    
-	    
-	    
-
-	   
+	    // Realiza acciones con los datos rescatados	   
 		    if (idCat.length() > 2) {
-		    	 System.out.println("idCat: " + idCat);
+		    	// El idcat viene en formato "C_34". Necesito el número y la primera letra. 
 		        idCatSubstring = idCat.substring(2);
 		        idCatInt = Integer.parseInt(idCatSubstring);
-		         primeraLetra = idCat.charAt(0);
-		        // Resto del código
-		    }
-		    
-		   
+		         primeraLetra = idCat.charAt(0);		   
+		    }  
 		    if (idImg.length() > 2) {
-		    	 System.out.println("idImg: " + idImg);
+		    	// El idImg viene en un formato parecido. Necesito el número. 
 		        idImgCatSubstring = idImg.substring(2);
 		        idImg = idImgCatSubstring.replaceAll("'", "");
-			    idImgInt = Integer.parseInt(idImg);
-		        // Resto del código
+			    idImgInt = Integer.parseInt(idImg);		    
 		    }
-		    
 		    if ( !idCatSinLetra.isEmpty() && idCatSinLetra.length() >= 1)  {
-		    	System.out.println("idCatSinLetra: " + idCatSinLetra);
+		    	
 		    	idCatSinLetraINT =  Integer.parseInt(idCatSinLetra);  
 		    }
-		    
-		   
 		    if (!idColor.isEmpty() && idColor.length() > 2) {
-		    	 System.out.println("idColor: " + idColor);
+		    	// En caso de ser enviado un color, necesito la primera letra, la # para poder ejecutar la función.
 		    	primeraLetraColor = idColor.substring(0, 1);
 		    	 System.out.println("primeraLetraColor: " + primeraLetraColor);
 		    } 
 		    
-		    
-		
-	   
-	    
+		  //Dependiendo de la primeraLetra construira un objeto Categorías u otro.   
 	    if (primeraLetra == 'C') {
 
 	    Categorias categorias = new Categorias( idCatInt,  idNombre, idImgInt, idColor );
@@ -147,7 +127,7 @@ public class UpdateCategorias extends HttpServlet {
 		}
 		   
 	   }else if (primeraLetraColor.equals("#")){
-		   System.out.println("siiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii: ");
+
 		   Categorias categorias = new Categorias( idCatInt,  idNombre, idImgInt, idColor );
 		   try {
 			   categorias.update();
@@ -157,7 +137,7 @@ public class UpdateCategorias extends HttpServlet {
 			}
 	   
 		}else {
-			System.out.println("nOOOOOOOOOOOOOOOOOOOOOOOOOOOOO: ");
+
 		   CategoriaSub categoriaSub = new CategoriaSub( idCatInt, idCatSinLetraINT,  idNombre, idImgInt );
 		   System.out.println(idCatSinLetra);
 		   System.out.println(idCatSinLetraINT);
@@ -169,17 +149,6 @@ public class UpdateCategorias extends HttpServlet {
 				e.printStackTrace();
 			}
 	   }
-	 
-	    CategoriaSub categoriaSub = new CategoriaSub();
-	    
-	    System.out.println("idCat: " + idCat);
-	    System.out.println("idImg: " + idImg);
-	    System.out.println("idNombre: " + idNombre);
-	    System.out.println("idColor: " + idColor);
-	    System.out.println("idCatSinLetra: " + idCatSinLetra);
-	    System.out.println("--------------------------------------------------- " );
-	   
-	    
 	}
 
 }

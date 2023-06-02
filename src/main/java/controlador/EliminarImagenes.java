@@ -18,6 +18,9 @@ import java.sql.SQLException;
 
 /**
  * Servlet implementation class EliminarImagenes
+ * 
+  * @author  Javier Luque Pardo
+ * 
  */
 @WebServlet("/EliminarImagenes")
 @MultipartConfig
@@ -40,6 +43,13 @@ public class EliminarImagenes extends HttpServlet {
 	}
 
 	/**
+	 * Procesa las solicitudes HTTP GET enviadas al servlet. Obtiene los datos necesarios de las diferentes tablas de la base de datos
+	 * y los envía al cliente en formato JSON.
+	 *
+	 * @param request  La solicitud HTTP recibida.
+	 * @param response La respuesta HTTP que se enviará.
+	 * @throws ServletException Si ocurre un error durante el procesamiento del servlet.
+	 * @throws IOException      Si ocurre un error de E/S durante el procesamiento del servlet.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

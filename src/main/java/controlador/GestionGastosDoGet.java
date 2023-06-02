@@ -27,6 +27,9 @@ import java.sql.SQLException;
 
 /**
  * Servlet implementation class GestionGastosDoGet
+ * 
+ * @author  Javier Luque Pardo
+ * 
  */
 @WebServlet("/GestionGastosDoGet")
 public class GestionGastosDoGet extends HttpServlet {
@@ -39,8 +42,15 @@ public class GestionGastosDoGet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Procesa las solicitudes HTTP GET enviadas al servlet. Obtiene los datos necesarios de las diferentes tablas de la base de datos
+     * y los envía al cliente en formato JSON.
+     *
+     * @param request  			La solicitud HTTP recibida.
+     * @param response 			La respuesta HTTP que se enviará.
+     * @throws ServletException Si ocurre un error durante el procesamiento del servlet.
+     * @throws IOException      Si ocurre un error de E/S durante el procesamiento del servlet.
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
@@ -76,8 +86,6 @@ public class GestionGastosDoGet extends HttpServlet {
 	        PrintWriter out = response.getWriter();
 	        out.println(respuestaJSON);
 	        
-	        System.out.println(respuestaJSON);
-
 	        out.close();
 	    } catch (SQLException e) {
 	        e.printStackTrace();

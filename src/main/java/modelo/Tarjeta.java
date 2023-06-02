@@ -3,91 +3,187 @@ package modelo;
 import java.util.Date;
 import java.math.BigDecimal;
 
+/**
+ * La clase Tarjeta representa una tarjeta.
+ * 
+ * @param id          El ID de la tarjeta.
+ * @param nombre      El nombre de la tarjeta.
+ * @param vencimiento La fecha de vencimiento de la tarjeta.
+ * @param descripcion La descripción de la tarjeta.
+ * @param limite      El límite de la tarjeta.
+ * @param usuario     El ID del usuario asociado a la tarjeta.
+ * 
+ * @author  Javier Luque Pardo
+ * 
+ */
 public class Tarjeta {
-	
-	private int id;
-	private String nombre;
-	private Date vencimiento;
-	private String descripcion;
-	private BigDecimal  limite;	
-	private int usuario;
-	
-	public Tarjeta() {
+    private int id;
+    private String nombre;
+    private Date vencimiento;
+    private String descripcion;
+    private BigDecimal limite;
+    private int usuario;
 
-	}
+    /**
+     * Crea un nuevo objeto Tarjeta sin inicializar sus atributos.
+     */
+    public Tarjeta() {
 
-	public Tarjeta(int id, String nombre, Date vencimiento, String descripcion, BigDecimal limite, int usuario) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.vencimiento = vencimiento;
-		this.descripcion = descripcion;
-		this.limite = limite;
-		this.usuario = usuario;
-	}
+    }
 
-	public Tarjeta(int id, String nombre, Date vencimiento, String descripcion, BigDecimal limite) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.vencimiento = vencimiento;
-		this.descripcion = descripcion;
-		this.limite = limite;
-	}
+    /**
+     * Crea un nuevo objeto Tarjeta con los atributos especificados.
+     *
+     * @param id          El ID de la tarjeta.
+     * @param nombre      El nombre de la tarjeta.
+     * @param vencimiento La fecha de vencimiento de la tarjeta.
+     * @param descripcion La descripción de la tarjeta.
+     * @param limite      El límite de la tarjeta.
+     * @param usuario     El ID del usuario asociado a la tarjeta.
+     */
+    public Tarjeta(int id, String nombre, Date vencimiento, String descripcion, BigDecimal limite, int usuario) {
+        this.id = id;
+        this.nombre = nombre;
+        this.vencimiento = vencimiento;
+        this.descripcion = descripcion;
+        this.limite = limite;
+        this.usuario = usuario;
+    }
 
-	public int getId() {
-		return id;
-	}
+    /**
+     * Crea un nuevo objeto Tarjeta con los atributos especificados, sin el ID del usuario.
+     *
+     * @param id          El ID de la tarjeta.
+     * @param nombre      El nombre de la tarjeta.
+     * @param vencimiento La fecha de vencimiento de la tarjeta.
+     * @param descripcion La descripción de la tarjeta.
+     * @param limite      El límite de la tarjeta.
+     */
+    public Tarjeta(int id, String nombre, Date vencimiento, String descripcion, BigDecimal limite) {
+        this.id = id;
+        this.nombre = nombre;
+        this.vencimiento = vencimiento;
+        this.descripcion = descripcion;
+        this.limite = limite;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    /**
+     * Obtiene el ID de la tarjeta.
+     *
+     * @return El ID de la tarjeta.
+     */
+    public int getId() {
+        return id;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    /**
+     * Establece el ID de la tarjeta.
+     *
+     * @param id El ID de la tarjeta.
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    /**
+     * Obtiene el nombre de la tarjeta.
+     *
+     * @return El nombre de la tarjeta.
+     */
+    public String getNombre() {
+        return nombre;
+    }
 
-	public Date getVencimiento() {
-		return vencimiento;
-	}
+    /**
+     * Establece el nombre de la tarjeta.
+     *
+     * @param nombre El nombre de la tarjeta.
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setVencimiento(Date vencimiento) {
-		this.vencimiento = vencimiento;
-	}
+    /**
+     * Obtiene la fecha de vencimiento de la tarjeta.
+     *
+     * @return La fecha de vencimiento de la tarjeta.
+     */
+    public Date getVencimiento() {
+        return vencimiento;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    /**
+     * Establece la fecha de vencimiento de la tarjeta.
+     *
+     * @param vencimiento La fecha de vencimiento de la tarjeta.
+     */
+    public void setVencimiento(Date vencimiento) {
+        this.vencimiento = vencimiento;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    /**
+     * Obtiene la descripción de la tarjeta.
+     *
+     * @return La descripción de la tarjeta.
+     */
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public BigDecimal getLimite() {
-		return limite;
-	}
+    /**
+     * Establece la descripción de la tarjeta.
+     *
+     * @param descripcion La descripción de la tarjeta.
+     */
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public void setLimite(BigDecimal limite) {
-		this.limite = limite;
-	}
+    /**
+     * Obtiene el límite de la tarjeta.
+     *
+     * @return El límite de la tarjeta.
+     */
+    public BigDecimal getLimite() {
+        return limite;
+    }
 
-	public int getUsuario() {
-		return usuario;
-	}
+    /**
+     * Establece el límite de la tarjeta.
+     *
+     * @param limite El límite de la tarjeta.
+     */
+    public void setLimite(BigDecimal limite) {
+        this.limite = limite;
+    }
 
-	public void setUsuario(int usuario) {
-		this.usuario = usuario;
-	}
+    /**
+     * Obtiene el ID del usuario asociado a la tarjeta.
+     *
+     * @return El ID del usuario asociado a la tarjeta.
+     */
+    public int getUsuario() {
+        return usuario;
+    }
 
-	@Override
-	public String toString() {
-		return "Tarjeta [id=" + id + ", nombre=" + nombre + ", vencimiento=" + vencimiento + ", descripcion="
-				+ descripcion + ", limite=" + limite + ", usuario=" + usuario + "]";
-	}
+    /**
+     * Establece el ID del usuario asociado a la tarjeta.
+     *
+     * @param usuario El ID del usuario asociado a la tarjeta.
+     */
+    public void setUsuario(int usuario) {
+        this.usuario = usuario;
+    }
 
-
+    /**
+     * Devuelve una representación en cadena del objeto Tarjeta.
+     *
+     * @return Una cadena que representa al objeto Tarjeta.
+     */
+    @Override
+    public String toString() {
+        return "Tarjeta [id=" + id + ", nombre=" + nombre + ", vencimiento=" + vencimiento + ", descripcion="
+                + descripcion + ", limite=" + limite + ", usuario=" + usuario + "]";
+    }
 }
+

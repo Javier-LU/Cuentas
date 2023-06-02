@@ -148,11 +148,7 @@ function pintarGastos(datos, contenedor) {
                      </select>
                    </div>
                  </div>
-               </div>
-               <div class="botones_main">
-                 <button class="buttons_up"> <img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png" alt="Subcategoría"></button>
-                 <button class="buttons_down"> <img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png" alt="Subcategoría"></button>
-               </div>
+               </div>           
              </div>`;
 
         // Pinto el div de los meses si se cumple la condición

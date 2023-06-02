@@ -20,6 +20,7 @@ import java.util.Date;
  * 
  * Esta clase proporciona métodos para acceder y manipular la información relacionada con un gasto
  * 
+ * Variables para crear un registro
  * @param fecha         La fecha del gasto.
  * @param concepto      El concepto del gasto.
  * @param importe       El importe del gasto.
@@ -31,77 +32,63 @@ import java.util.Date;
  * @param fechaTarjeta  La fecha de la tarjeta asociada al gasto.
  * @param tipoTarjeta   El tipo de tarjeta asociada al gasto. 
  * 
+ * Variables para pintar la web
+ * @param fechaString          La fecha en formato de cadena.
+ * @param concepto             El concepto de los gastos.
+ * @param importe              El importe de los gastos.
+ * @param saldo                El saldo de los gastos.
+ * @param anotaciones          Las anotaciones de los gastos.
+ * @param fechaTarjetaString   La fecha de la tarjeta en formato de cadena.
+ * @param tipoTarjeta          El tipo de la tarjeta.
+ * @param ID                   El ID de los gastos.
+ * @param imagen_categoria     La imagen de la categoría de los gastos en formato texto, scr.
+ * @param imagen_subcategoria  La imagen de la subcategoría de los gastos en formato texto, scr.
+ * @param nombre_categoria     El nombre de la categoría de los gastos.
+ * @param nombre_subcategoria  El nombre de la subcategoría de los gastos.
+ * @param nombre_tarjeta       El nombre de la tarjeta de los gastos.
+ * @param color                El color de los gastos.
+ * @param IdSub                El ID de la subcategoría de los gastos.
+ * @param IdCatSub             El ID de la categoría de la subcategoría de los gastos.
+ * 
+ * Variables para pintar la web en relación a estos parametros 
+ * @param fecha1: 				La primera fecha utilizada en lanzar consultas.
+ * @param fecha2: 				La segunda fecha utilizada  en lanzar consultas.
+ * @param 						La clave utilizada para realizar operaciones.
+ * 
  * @author Javier Luque DAW
  */
 
 public class Gastos {
-
-								private Date fecha;
-								private String concepto;
-								private int importe;
-								private int saldo;
+	
+	// Variables para crear un registro de gasto en la base de datos
+	private Date fecha;
+	private String concepto;
+	private int importe;
+	private int saldo;
 	private int categoria;
 	private int subcategoria;
-								private String anotaciones;
-	private int creditoDebito;	
-								private Date fechaTarjeta;
-								private int tipoTarjeta;
+	private String anotaciones;
+	private int creditoDebito;							
+	private Date fechaTarjeta;
+	private int tipoTarjeta;					
 	
-									private int ID;
-									private String imagen_categoria;
-									private String imagen_subcategoria;
-									private String nombre_categoria;
-									private String nombre_subcategoria;
-									private String nombre_tarjeta;
-									
-									private String fechaString;
-									private String fechaTarjetaString;
-									
-									private String color;
-									
-									private int IdSub;
-									private int IdCatSub;
-								
-									
-									
-									
-									
-									    private static Date fecha1;
-									    private static Date fecha2;
-									    private static String key;
+	//Variables para cargar un registro de gasto en la web								
+	private int ID;
+	private String imagen_categoria;
+	private String imagen_subcategoria;
+	private String nombre_categoria;
+	private String nombre_subcategoria;
+	private String nombre_tarjeta;	
+	private String fechaString;
+	private String fechaTarjetaString;	
+	private String color;	
+	private int IdSub;
+	private int IdCatSub;
 
-									    public Date getFecha1() {
-									        return fecha1;
-									    }
-
-									    public void setFecha1(Date fecha1) {
-									        Gastos.fecha1 = fecha1;
-									    }
-
-									    public Date getFecha2() {
-									        return fecha2;
-									    }
-
-									    public void setFecha2(Date fecha2) {
-									        Gastos.fecha2 = fecha2;
-									    }
-
-									    public String getKey() {
-									        return key;
-									    }
-
-									    public void setKey(String key) {
-									        Gastos.key = key;
-									    }
-									
-
-
-
-
-
-
-
-
+	//Variables que necesito que mantengan sus valores incluso después de que la ejecución de la clase haya terminado.
+	  private static Date fecha1;
+	  private static Date fecha2;
+	  private static String key;								
 
 	/**
      * Constructor predeterminado de la clase gastos.
@@ -111,15 +98,27 @@ public class Gastos {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/**
+	 * Crea un nuevo objeto Gastos con los valores especificados.
+	 * LO utilizo para pintar la web
+	 *
+	 * @param fechaString          La fecha en formato de cadena.
+	 * @param concepto             El concepto de los gastos.
+	 * @param importe              El importe de los gastos.
+	 * @param saldo                El saldo de los gastos.
+	 * @param anotaciones          Las anotaciones de los gastos.
+	 * @param fechaTarjetaString   La fecha de la tarjeta en formato de cadena.
+	 * @param tipoTarjeta          El tipo de la tarjeta.
+	 * @param ID                   El ID de los gastos.
+	 * @param imagen_categoria     La imagen de la categoría de los gastos.
+	 * @param imagen_subcategoria  La imagen de la subcategoría de los gastos.
+	 * @param nombre_categoria     El nombre de la categoría de los gastos.
+	 * @param nombre_subcategoria  El nombre de la subcategoría de los gastos.
+	 * @param nombre_tarjeta       El nombre de la tarjeta de los gastos.
+	 * @param color                El color de los gastos.
+	 * @param IdSub                El ID de la subcategoría de los gastos.
+	 * @param IdCatSub             El ID de la categoría de la subcategoría de los gastos.
+	 */	
     public Gastos(String fechaString, String concepto, int importe, int saldo, String anotaciones, String fechaTarjetaString,
 			int tipoTarjeta, int iD, String imagen_categoria, String imagen_subcategoria, String nombre_categoria,
 			String nombre_subcategoria, String nombre_tarjeta, String color, int IdSub, int IdCatSub) {
@@ -143,16 +142,8 @@ public class Gastos {
 	}
 
 
-
-
-
-
-
-
-
-
 	/**
-     * Constructor de la clase gastos con todos los parámetros.
+     * Constructor de la clase gastos con todos los parámetros que se emplea para insertar un objeto.
      *
      * @param fecha         La fecha del gasto.
      * @param concepto      El concepto del gasto.
@@ -360,93 +351,258 @@ public class Gastos {
 		this.tipoTarjeta = tipoTarjeta;
 	}	
 	
-		
-
 	
-	public int getID() {
-		return ID;
-	}
+    /**
+     * Obtiene la fecha 1.
+     *
+     * @return La fecha 1.
+     */
+    public Date getFecha1() {
+        return fecha1;
+    }
 
-	public void setID(int iD) {
-		ID = iD;
-	}
+    /**
+     * Establece la fecha 1.
+     *
+     * @param fecha1 La fecha 1.
+     */
+    public void setFecha1(Date fecha1) {
+        Gastos.fecha1 = fecha1;
+    }
 
-	public String getImagen_categoria() {
-		return imagen_categoria;
-	}
+    /**
+     * Obtiene la fecha 2.
+     *
+     * @return La fecha 2.
+     */
+    public Date getFecha2() {
+        return fecha2;
+    }
 
-	public void setImagen_categoria(String imagen_categoria) {
-		this.imagen_categoria = imagen_categoria;
-	}
+    /**
+     * Establece la fecha 2.
+     *
+     * @param fecha2 La fecha 2.
+     */
+    public void setFecha2(Date fecha2) {
+        Gastos.fecha2 = fecha2;
+    }
 
-	public String getImagen_subcategoria() {
-		return imagen_subcategoria;
-	}
+    /**
+     * Obtiene la clave.
+     *
+     * @return La clave.
+     */
+    public String getKey() {
+        return key;
+    }
 
-	public void setImagen_subcategoria(String imagen_subcategoria) {
-		this.imagen_subcategoria = imagen_subcategoria;
-	}
+    /**
+     * Establece la clave.
+     *
+     * @param key La clave.
+     */
+    public void setKey(String key) {
+        Gastos.key = key;
+    }
 
-	public String getNombre_categoria() {
-		return nombre_categoria;
-	}
+    /**
+     * Obtiene el ID.
+     *
+     * @return El ID.
+     */
+    public int getID() {
+        return ID;
+    }
 
-	public void setNombre_categoria(String nombre_categoria) {
-		this.nombre_categoria = nombre_categoria;
-	}
+    /**
+     * Establece el ID.
+     *
+     * @param iD El ID.
+     */
+    public void setID(int iD) {
+        ID = iD;
+    }
 
-	public String getNombre_subcategoria() {
-		return nombre_subcategoria;
-	}
+    /**
+     * Obtiene la imagen de la categoría.
+     *
+     * @return La imagen de la categoría.
+     */
+    public String getImagen_categoria() {
+        return imagen_categoria;
+    }
 
-	public void setNombre_subcategoria(String nombre_subcategoria) {
-		this.nombre_subcategoria = nombre_subcategoria;
-	}
+    /**
+     * Establece la imagen de la categoría.
+     *
+     * @param imagen_categoria La imagen de la categoría.
+     */
+    public void setImagen_categoria(String imagen_categoria) {
+        this.imagen_categoria = imagen_categoria;
+    }
 
-	public String getNombre_tarjeta() {
-		return nombre_tarjeta;
-	}
+    /**
+     * Obtiene la imagen de la subcategoría.
+     *
+     * @return La imagen de la subcategoría.
+     */
+    public String getImagen_subcategoria() {
+        return imagen_subcategoria;
+    }
 
-	public void setNombre_tarjeta(String nombre_tarjeta) {
-		this.nombre_tarjeta = nombre_tarjeta;
-	}
-		
+    /**
+     * Establece la imagen de la subcategoría.
+     *
+     * @param imagen_subcategoria La imagen de la subcategoría.
+     */
+    public void setImagen_subcategoria(String imagen_subcategoria) {
+        this.imagen_subcategoria = imagen_subcategoria;
+    }
 
-	public String getFechaString() {
-		return fechaString;
-	}
+    /**
+     * Obtiene el nombre de la categoría.
+     *
+     * @return El nombre de la categoría.
+     */
+    public String getNombre_categoria() {
+        return nombre_categoria;
+    }
 
-	public void setFechaString(String fechaString) {
-		this.fechaString = fechaString;
-	}
+    /**
+     * Establece el nombre de la categoría.
+     *
+     * @param nombre_categoria El nombre de la categoría.
+     */
+    public void setNombre_categoria(String nombre_categoria) {
+        this.nombre_categoria = nombre_categoria;
+    }
 
+    /**
+     * Obtiene el nombre de la subcategoría.
+     *
+     * @return El nombre de la subcategoría.
+     */
+    public String getNombre_subcategoria() {
+        return nombre_subcategoria;
+    }
 
-	public String getFechaTarjetaString() {
-		return fechaTarjetaString;
-	}
+    /**
+     * Establece el nombre de la subcategoría.
+     *
+     * @param nombre_subcategoria El nombre de la subcategoría.
+     */
+    public void setNombre_subcategoria(String nombre_subcategoria) {
+        this.nombre_subcategoria = nombre_subcategoria;
+    }
 
+    /**
+     * Obtiene el nombre de la tarjeta.
+     *
+     * @return El nombre de la tarjeta.
+     */
+    public String getNombre_tarjeta() {
+        return nombre_tarjeta;
+    }
 
-	public void setFechaTarjetaString(String fechaTarjetaString) {
-		this.fechaTarjetaString = fechaTarjetaString;
-	}
+    /**
+     * Establece el nombre de la tarjeta.
+     *
+     * @param nombre_tarjeta El nombre de la tarjeta.
+     */
+    public void setNombre_tarjeta(String nombre_tarjeta) {
+        this.nombre_tarjeta = nombre_tarjeta;
+    }
 
+    /**
+     * Obtiene la fecha en formato de cadena.
+     *
+     * @return La fecha en formato de cadena.
+     */
+    public String getFechaString() {
+        return fechaString;
+    }
 
-	public String getColor() {
-		return color;
-	}
+    /**
+     * Establece la fecha en formato de cadena.
+     *
+     * @param fechaString La fecha en formato de cadena.
+     */
+    public void setFechaString(String fechaString) {
+        this.fechaString = fechaString;
+    }
 
-	
-	public void setColor(String color) {
-		this.color = color;
-	}
+    /**
+     * Obtiene la fecha de la tarjeta en formato de cadena.
+     *
+     * @return La fecha de la tarjeta en formato de cadena.
+     */
+    public String getFechaTarjetaString() {
+        return fechaTarjetaString;
+    }
 
+    /**
+     * Establece la fecha de la tarjeta en formato de cadena.
+     *
+     * @param fechaTarjetaString La fecha de la tarjeta en formato de cadena.
+     */
+    public void setFechaTarjetaString(String fechaTarjetaString) {
+        this.fechaTarjetaString = fechaTarjetaString;
+    }
 
+    /**
+     * Obtiene el color.
+     *
+     * @return El color.
+     */
+    public String getColor() {
+        return color;
+    }
 
+    /**
+     * Establece el color.
+     *
+     * @param color El color.
+     */
+    public void setColor(String color) {
+        this.color = color;
+    }
 
+    /**
+     * Obtiene el ID de la subcategoría asociada al gasto.
+     *
+     * @return El ID de la subcategoría.
+     */
+    public int getIdSub() {
+        return IdSub;
+    }
 
+    /**
+     * Establece el ID de la subcategoría asociada al gasto.
+     *
+     * @param idSub El ID de la subcategoría a establecer.
+     */
+    public void setIdSub(int idSub) {
+        IdSub = idSub;
+    }
 
+    /**
+     * Obtiene el ID de la categoría subcategoría al gasto.
+     *
+     * @return El ID de la categoría subcategoría.
+     */
+    public int getIdCatSub() {
+        return IdCatSub;
+    }
 
-
+    /**
+     * Establece el ID de la categoría subcategoría al gasto.
+     *
+     * @param idCatSub El ID de la categoría subcategoría a establecer.
+     */
+    public void setIdCatSub(int idCatSub) {
+        IdCatSub = idCatSub;
+    }
 
 
 	/**
@@ -460,6 +616,11 @@ public class Gastos {
 		dao.insertGastos(this);
 	}
 	
+	/**
+	 * Realiza los update oportunos y necesarios.
+	 *
+	 * @throws SQLException si ocurre un error al interactuar con la base de datos.
+	 */	
 	public void update () throws SQLException {		
 		
 		DaoGastos dao = new DaoGastos();

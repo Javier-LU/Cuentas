@@ -1,6 +1,5 @@
-
     // Tipo de imagen
-    const basura = document.getElementById('basura');
+    const basura5 = document.getElementById('basura');
     var formImg = document.getElementById('formImg');
     const fileInput = document.getElementById('file');
     // Boton imagen usuario 
@@ -911,7 +910,7 @@
 
     // Botones para cargar y eliminar imagenes ---------------
     // Boton para eliminar
-    basura.addEventListener('click', function (event) {
+    basura5.addEventListener('click', function (event) {
 
       let scr = sessionStorage.getItem('dir');
       fetch('../EliminarImagenes', {

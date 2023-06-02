@@ -24,7 +24,9 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 
 /**
- * Servlet implementation class GestionGastosDoSet
+ * Servlet implementation class GestionGastosDoSet. Uso del doPost.
+ * 
+ * @author  Javier Luque Pardo
  */
 @WebServlet("/GestionGastosDoSetOrderBy")
 @MultipartConfig
@@ -47,6 +49,12 @@ public class GestionGastosDoSetOrderBy extends HttpServlet {
 	}
 
 	/**
+	 * Procesa las solicitudes HTTP POST enviadas al servlet. Recibe los parámetros de fecha y clave desde el cliente,
+	 * los convierte al formato adecuado y los asigna a un objeto Gastos.
+	 *
+	 * @param request  La solicitud HTTP recibida.
+	 * @param response La respuesta HTTP que se enviará.
+	 * @throws ServletException Si ocurre un error durante el procesamiento del servlet.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

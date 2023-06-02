@@ -28,7 +28,9 @@ import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.sql.SQLException;
 /**
- * Servlet implementation class GestionImagenes
+ * Servlet implementation class GestionImagenes. Uso del doPost.
+ * 
+ * @author  Javier Luque Pardo
  */
 @WebServlet("/GestionImagenes")
 @MultipartConfig
@@ -45,7 +47,8 @@ public class GestionImagenes extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
+    /**
+
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,6 +57,13 @@ public class GestionImagenes extends HttpServlet {
 	}
 
 	/**
+	 * Procesa las solicitudes HTTP POST enviadas al servlet. Recibe una imagen y su tipo desde el cliente,
+     * guarda la imagen en el servidor y registra la información en la base de datos.
+     *
+     * @param request  La solicitud HTTP recibida.
+     * @param response La respuesta HTTP que se enviará.
+     * @throws ServletException Si ocurre un error durante el procesamiento del servlet.
+     * @throws IOException      Si ocurre un error de E/S durante el procesamiento del servlet.
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -76,17 +86,16 @@ public class GestionImagenes extends HttpServlet {
 		File file = new File(upload, newFileName);
 		 try {
 		        Files.copy(input, file.toPath());
-		    } catch (IOException e) {
-		    	
+		    } catch (IOException e) {		    	
 		    	System.out.println("Error");
 		    }
-		 
+		 // Construir la ruta de acceso a la imagen en el servidor
 			pathBS += newFileName;
-			System.out.println(pathBS);
-			System.out.println("tipooooo  " + tipoImagen);
+
 			Imagenes img = new Imagenes(pathBS, tipoImagen );
 			
 			try {
+				// Insertar la información de la imagen en la base de datos
 				img.insertar();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

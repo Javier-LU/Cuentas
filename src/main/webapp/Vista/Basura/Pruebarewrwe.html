@@ -1,165 +1,53 @@
-if (textoOption != "Elige una categoría") {
-  nuevoOption = document.createElement("option");
-  nuevoOption.value = textoValue;
-  nuevoOption.textContent = textoOption;
-  input.appendChild(nuevoOption);
-};
-for (var i = 0; i < sub.length; i++) {
- 
-  
-    console.log("-----------bucle------------");
-    nuevoOption = document.createElement("option");
-    nuevoOption.value = sub[i].id;
-    nuevoOption.textContent = sub[i].nombre;
-    input.appendChild(nuevoOption);
-  
-}
-input.addEventListener('change', function () {
-  opcionSeleccionada = input.options[input.selectedIndex];
-  textoValue = opcionSeleccionada.value;
-  textoOption = opcionSeleccionada.textContent;
-});
-while (input.firstChild) {
-  input.removeChild(input.firstChild);
-}
-nuevoOption = document.createElement("option");
-nuevoOption.value = textoValue;
-nuevoOption.textContent = textoOption;
-input.appendChild(nuevoOption);
-for (var i = 0; i < sub.length; i++) {
-  if (sub[i].nombre == textoOption) {
-    hermanoHijo[0].src = sub[i].img;
-    break;
-  }
-}
+<div id="contenedor_registros_dinamicos">
+
+  <div class="contenedor_fondo_registro">
+    <div class="contenedor_registro">
+      <input type="date" class="input registro_fecha" name="date">
+
+      <input type="text" class="input registro_concepto" name="concepto">
+      <input type="number" class="input registro_importe" name="importe">
+      <input type="number" class="input registro_saldo" name="saldo">
+
+      <div class="registro_imagenes">
+        <img src="Photos/Iconos_aplicacion/Categorias/DV.png" alt="Categoría">
+        <img src="Photos/Iconos_aplicacion/Categorias/GF.png" alt="Subcategoría">
+      </div>
+
+      <select class="input registro_categoria" name="categoria">
+        <option value="1">Elige una categoría</option>
+        <option value="2">segunda opcion</option>
+      </select>
+      <select class="input registro_subcategoria" name="subcategoria">
+        <option value="1">Falta categoría</option>
+        <option value="2">Fal23232</option>
+
+      </select>
+      <textarea class="input registro_anotaciones" name="Anotaciones"></textarea>
 
 
+      <div class="contenedor_tipo_tarjeta2">
+
+        <div class="contenedor_Tarjeta1">
 
 
-
-
-
-
-
-
-
-
-
-
-
-console.log(nombreInput)
-switch (nombreInput) {
-  case "categoria":
-    padre = input.parentNode;
-    hermanoPosterior = input.nextElementSibling;
-
-    while (input.firstChild) {
-      input.removeChild(input.firstChild);
-    }
-
-    nuevoOption = document.createElement("option");
-    nuevoOption.value = textoValue;
-    nuevoOption.textContent = textoOption;
-    input.appendChild(nuevoOption);
-
-    for (var i = 0; i < cat.length; i++) {
-      if (cat[i].nombre != textoOption) {
-        nuevoOption = document.createElement("option");
-        nuevoOption.value = cat[i].id;
-        nuevoOption.textContent = cat[i].nombre;
-        input.appendChild(nuevoOption);
-      }
-    }
-    input.addEventListener('change', function () {
-
-
-      opcionSeleccionada = input.options[input.selectedIndex];
-      textoValue = opcionSeleccionada.value;
-      textoOption = opcionSeleccionada.textContent;
-
-
-      while (input.firstChild) {
-        input.removeChild(input.firstChild);
-      }
-
-      nuevoOption = document.createElement("option");
-      nuevoOption.value = textoValue;
-      nuevoOption.textContent = textoOption;
-      input.appendChild(nuevoOption);
-      input.style.backgroundColor = "red";
-      for (var i = 0; i < hermanoPosterior.length; i++) {
-        hermanoPosterior.options[0].remove();
-      }
-      nuevoOption = document.createElement("option");
-      nuevoOption.value = textoValue;
-      nuevoOption.textContent = "Elige una categoría";
-      hermanoPosterior.appendChild(nuevoOption);
-
-      for (var i = 0; i < cat.length; i++) {
-        if (cat[i].nombre == textoOption) {
-          hermanoHijo[0].src = cat[i].imgString;
-          padre.style.backgroundColor = cat[i].color;
-          break;
-        }
-      }
-
-
-
-    });
-
-
-
-
-
-
-    break;
-  case "subcategoria":
-    for (var i = 0; i < sub.length; i++) {
-      if (sub[i].idCategoria == textoValue) {
-        numero++;
-      }
-    }
-
-    if (numero == 0) {
-      while (input.firstChild) {
-        input.removeChild(input.firstChild);
-      };
-      nuevoOption = document.createElement("option");
-      nuevoOption.value = "0"
-      nuevoOption.textContent = "Vacio";
-      input.appendChild(nuevoOption);
-      break;
-    }
-
-
-
-    while (input.firstChild) {
-      input.removeChild(input.firstChild);
-    };
-
-    if (textoOption != "Elige una categoría") {
-      nuevoOption = document.createElement("option");
-      nuevoOption.value = textoValue;
-      nuevoOption.textContent = textoOption;
-      input.appendChild(nuevoOption);
-    };
-
-
-    for (var i = 0; i < sub.length; i++) {
-      if (sub[i].idCategoria == textoValue) {
-        numero++;
-        nuevoOption = document.createElement("option");
-        nuevoOption.value = textoValue + "_" + sub[i].id;
-        nuevoOption.textContent = sub[i].nombre;
-        input.appendChild(nuevoOption);
-
-
-
-        break;
-  default:
-    console.log("Nombre de input desconocido");
-    break;
-}
-}
-
-});
+          <select class="input registro_tar" name="credito">
+            <option value="1">Debito</option>
+            <option value="2">C.Total. Credito de gasto acumulado</option>
+            <option value="3">C.General. Credito de gasto pendiente.</option>
+          </select>
+          <input type="date" class="input registro_tarjeta_fecha" name="fecha_tarjeta">
+        </div>
+        <div>
+          <select class="input registro_tarjeta_tipo" name="tipo_tarjeta">
+            <option value="1">Seleciona tarjeta</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="botones_main">
+      <button class="buttons_up"> <img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png"
+          alt="Subcategoría"></button>
+      <button class="buttons_down"> <img src="Photos/Iconos_aplicacion/Blancos/Nav_little/Basuras.png"
+          alt="Subcategoría"></button>
+    </div>
+  </div>
